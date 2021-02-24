@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "NeonFont"; /*a name to be used later*/
+    src: "./components/fonts/NEON____.TTF"; /*address to font*/
+}
+
+.websiteName {
+    font-family: "NeonFont";
+}
+
+.mainDeals {
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    width: 100%;
+    height: 50vh;
+}
+
+.all-video-games-content {
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.all-video-games-container {
+    padding: 0.5rem;
+}
+
+.mainDealsItems {
+    flex-grow: 1;
+    text-align: center;
+    height: 50vh;
+}
+
+.card-container {
+    border: 1px solid black;
+    width: 19%;
+    padding: 1rem; /* REM */
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.card-image-container, .card-img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.game-selected-img {
+    width: 40%;
+    border-radius: 15px;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.game-selected-details {
+    text-align: center;
+}
+
+.card-details-container {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.buy-now-button {
+    width: 30%;
+    background-color: gray;
+    border-radius: 5px;
+}

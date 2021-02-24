@@ -1,0 +1,229 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "name": "Sea Of Thieves",
+      "description": "Sea of Thieves is a 2018 action-adventure game developed by Rare and published by Microsoft Studios. The player assumes the role of a pirate who completes voyages from different trading companies in order to become the ultimate pirate legend.",
+      "publisher": "Microsoft",
+      "image": "https://cdn.pixabay.com/photo/2018/03/20/10/04/illustrator-3242713_960_720.jpg",
+      "genre": "adventure",
+      "price": 29.9
+    },
+    {
+      "id": 2,
+      "name": "Metro: Last Light",
+      "description": "Metro: Last Light is a post-apocalyptic-themed, first-person shooter video game with stealth and survival horror elements. It was developed by Ukrainian studio 4A Games and published by Deep Silver for Microsoft Windows, PlayStation 3 and Xbox 360 in May 2013.",
+      "publisher": "Deep Silver",
+      "image": "https://cdn.pixabay.com/photo/2018/04/06/13/46/poly-3295856_960_720.png",
+      "genre": "action",
+      "price": 14.9
+    },
+    {
+      "id": 3,
+      "name": "Kerbal Space Program",
+      "description": "Build spacecraft, fly them, and try to help the Kerbals fulfill their ultimate mission of conquering space.",
+      "publisher": "Squad, Take-Two Interactive, Private Division",
+      "image": "https://cdn.pixabay.com/photo/2018/03/22/10/09/illustrator-3249914_960_720.jpg",
+      "genre": "building",
+      "price": 19.9
+    },
+    {
+      "id": 4,
+      "name": "Hitman III",
+      "description": "Hitman 3 is a stealth game developed and published by IO Interactive for Microsoft Windows, PlayStation 4, PlayStation 5, Xbox One, Xbox Series X/S, Stadia, and Nintendo Switch on 20 January 2021.",
+      "publisher": "IO Interactive",
+      "image": "https://cdn.pixabay.com/photo/2018/03/12/15/06/deer-3219872_960_720.jpg",
+      "genre": "Stealth",
+      "price": 39.9
+    },
+    {
+      "id": 5,
+      "name": "Dying Light",
+      "description": "Dying Light is a first-person action survival game set in a post-apocalyptic open world overrun by flesh-hungry zombies. Roam a city devastated by a mysterious virus epidemic. Scavenge for supplies, craft weapons, and face hordes of the infected.",
+      "publisher": "Techland, Warner Bros. Interactive Entertainment",
+      "image": "https://cdn.pixabay.com/photo/2017/07/01/00/01/low-poly-coffee-2460226_960_720.png",
+      "genre": "Survival",
+      "price": 9.9
+    },
+    {
+      "id": 6,
+      "name": "Half-Life: Alyx",
+      "description": "Half-Life: Alyx is a 2020 virtual reality first-person shooter developed and published by Valve. Set between the events of Half-Life and Half-Life 2, players control Alyx Vance on a mission to seize a superweapon belonging to the alien Combine.",
+      "publisher": "",
+      "image": "https://cdn.pixabay.com/photo/2018/04/06/13/46/poly-3295857_960_720.jpg",
+      "genre": "VR",
+      "price": 69.9
+    },
+    {
+      "id": 7,
+      "name": "BeatSaber",
+      "description": "Beat Saber is a virtual reality rhythm game developed and published by Beat Games. It takes place in a surrealistic neon environment and features the player slicing blocks representing musical beats with a pair of contrasting-colored sabers.",
+      "publisher": "",
+      "image": "https://cdn.pixabay.com/photo/2018/03/19/11/18/giraffe-3239743_960_720.jpg",
+      "genre": "VR",
+      "price": 19.9
+    },
+    {
+      "id": 8,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 9,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 10,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 11,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 12,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 13,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 14,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 15,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 16,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 17,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 18,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 19,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 20,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 21,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 22,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 23,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 24,
+      "name": "DELETE-DUMMY",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": 0
+    },
+    {
+      "id": 26,
+      "name": "DELETE-DUMMY-LMAO",
+      "description": "DEL.",
+      "publisher": "DEL.",
+      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
+      "genre": "VR",
+      "price": "15"
+    }
+  ]
+}
