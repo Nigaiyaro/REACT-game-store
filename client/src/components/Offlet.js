@@ -11,8 +11,7 @@ const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handl
     let sortedGames = [];
 
     selectedGenre ? filteredGames = games.filter((game) => game.genre === selectedGenre) : filteredGames = games;
-
-    sortedGames = filteredGames;
+    // IF THERE IS GENRE SELECTED, FILTER THROUGH IT. IF NOT, REMAIN THE SAME.
 
 
 
@@ -43,21 +42,18 @@ const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handl
 
 
 
-
-    if (!games) {
+    if (!games) { // IF GAMES ARE NOT FOUND. ERROR CHECKING.
         return <div>Loading...</div>
     }
 
-    return (
+    return ( // RETURN SECTION
         <div className="all-video-games-container">
 
             <div className="all-video-games-title">
                 <h1 style={{ display: "flex", justifyContent: "center" }}>All videogames</h1>
             </div>
 
-            <FilterGenre games={games} setSelectedGenre={setSelectedGenre} />
-
-            {/* HERE */}
+            <FilterGenre games={games} setSelectedGenre={setSelectedGenre} /> {/* FUNCTIONALITY OF FILTER BUTTON */}
 
             <select onChange={(e) => setSelectedSorting(e.target.value)} name="sort" id="sort" style={{ fontSize: "1.1rem" }}>
                 <option value="">Sort by...</option>
@@ -66,8 +62,6 @@ const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handl
                 <option value="ascending-price">ascending price</option>
                 <option value="descending-price">descending price</option>
             </select>
-
-            {/* HERE */}
 
             <div className="all-video-games-content">
 
@@ -91,40 +85,3 @@ const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handl
 }
 
 export default Offlet;
-
-/*if (selectedGenre) {
-        setoffletGames(games.filter((game) => game.genre === selectedGenre));
-    } else {
-        setoffletGames(games);
-    }*/
-
-
-    // const filteredGames = games.filter((game) => game.genre === selectedGenre);
-
-
-/*const handleSort = (value) => {
-    console.log(filteredGames);
-    console.log("running, no?");
-    if (value === "") { // ASCENDING PRICE
-        sortedGames = filteredGames;
-        console.log("empty check");
-    } else if (value === "ascending-name") { // ASCENDING NAME
-        sortedGames = ([...filteredGames].sort(function (a, b) {
-            if (a.name < b.name) { return -1; }
-            if (a.name > b.name) { return 1; }
-            return 0;
-        }));
-    } else if (value === "descending-name") { // DESCENDING NAME
-        sortedGames = ([...filteredGames].sort(function (a, b) {
-            if (b.name < a.name) { return -1; }
-            if (b.name > a.name) { return 1; }
-            return 0;
-        }));
-    } else if (value === "ascending-price") { // ASCENDING PRICE
-        sortedGames = ([...filteredGames].sort((a, b) => b.price - a.price));
-    } else if (value === "descending-price") { // DESCENDING PRICE
-        sortedGames = ([...filteredGames].sort((a, b) => a.price - b.price));
-    }
-    console.log(sortedGames);
-}
-*/
