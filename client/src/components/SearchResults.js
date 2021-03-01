@@ -11,7 +11,7 @@ const SearchResults = ({ games, searchInput, handleModal, handleDelete, admin, s
     console.log(filteredGames);
     
     return (
-        <div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             {filteredGames.map((game) =>
             <Card
             game={game}

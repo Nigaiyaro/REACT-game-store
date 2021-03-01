@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import Logo from "./images/icons8-castle-64.png";
+import SearchIcon from '@material-ui/icons/Search';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
 
     let history = useHistory();
-
-    
 
     const styles = {
         navigation: {
@@ -19,7 +19,7 @@ const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
         },
         imageContainer: {
             // border: "1px solid red",
-            width: "50px%"
+            width: "22%"
         }
     }
 
@@ -34,26 +34,29 @@ const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
 
             <div style={styles.imageContainer}>
                 <Link to="/">
-                    <img src={Logo} alt="CastleGames" style={{ height: "100%" }} />
+                    <img src={Logo} alt="CastleGames" style={{ height: "100%", paddingLeft: "1rem" }} />
                 </Link>
+
+                <p className="websiteName" style={{ paddingLeft: "1rem" }}>Castle Games LLC.</p>
             </div>
 
-            <div style={{ /*border: "1px solid blue",*/ width: "30%" }}>
-                <p className="websiteName">Castle Games LLC.</p>
+            <div style={{ display: "flex", border: "1px solid orange", width: "40%" }}>
+
+                <input type="text" name="search" value={searchInput}
+                    style={{ height: "3rem", width: "80%"}}
+                    onChange={(e) => setSearchInput(e.target.value)} />
+
+                <button onClick={handleSearch} style={{ height: "3rem", width: "20%" }}>
+                    <SearchIcon />
+                </button>
+                {/* transform: "scale(2)" */}
             </div>
 
-            <div style={{ /*border: "1px solid orange",*/ width: "30%" }}>
+            <button onClick={() => handleAdmin(!admin)} style={{ marginRight: "3rem" }}>{admin ? "Switch to customer ->" : "Switch to admin ->"}</button>
 
-                    
-                        Search:
-                        <input type="text" name="search" value={searchInput}
-                        onChange={(e) => setSearchInput(e.target.value)} />
-                    
-                    <button onClick={handleSearch}>Search</button>
-
-            </div>
-
-            <button onClick={() => handleAdmin(!admin)}>{admin ? "Switch to customer ->" : "Switch to admin ->"}</button>
+            <Link to="/cart">
+                <ShoppingCartIcon style={{ marginRight: "3rem" }}/>
+            </Link>
 
         </div>
     )

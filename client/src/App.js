@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
-import { Route } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 import Modal from 'react-modal';
 import gameService from "./services/games";
 
@@ -11,8 +11,11 @@ import SelectedGameView from "./components/SelectedGameView";
 import SearchResults from "./components/SearchResults";
 import Modify from "./components/Modify";
 import AddNewGame from "./components/AddNewGame";
+import Cart from "./components/Cart";
 
 function App() {
+
+  let history = useHistory();
 
   // STATES
   const [admin, setAdmin] = useState(false);
@@ -20,6 +23,8 @@ function App() {
   const [currentGame, setCurrentGame] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [showNotification, setShowNotification] = useState({ msg: "", show: false });
+  const [cart, setCart] = useState([]);
 
   // USE EFFECT
   useEffect(() => {
@@ -30,31 +35,40 @@ function App() {
     getInitialData();
   }, [])
 
-  console.log(searchInput);
+  const handleNotification = (msg, show, delay) => {
+    setShowNotification({ msg, show });
 
-    // FUNCTIONS
+    setTimeout(() => setShowNotification({ msg, show: false }), delay);
+  }
+
+  // FUNCTIONS
   const handleAdmin = (boolean) => setAdmin(boolean);
   const handleModal = (boolean) => setModalIsOpen(boolean);
 
   const handleDelete = (id) => {
     gameService.deleteData(id);
     setGames(games.filter((gameThis) => gameThis.id !== id));
+    history.push("/");
   }
 
-  const handleNewGame = async(newGame) => {
+  const handleNewGame = async (newGame) => {
     const updatedData = await gameService.addData(newGame); // RENAME "TEST"
-    setGames(...games, updatedData);
-    // setGames(games.concat(test))
+    setGames([...games, updatedData]);
+    handleNotification("Succesfully added a game", true, 2000);
   }
 
-  const handleModifyGame = async(modifiedGame) => {
+  const handleModifyGame = async (modifiedGame) => {
     const updatedData = await gameService.modifyData(modifiedGame);
 
     setGames(games.map((game) => (game.id === updatedData.id) ? updatedData : game));
-
+    handleNotification("Succesfully modified game", true, 2000);
   }
 
-  console.log(games);
+  const handleCart = (game) => {
+    setCart([...cart, game]);
+  }
+
+  console.log(cart);
 
   // MODAL
   Modal.setAppElement('#modal')
@@ -78,46 +92,63 @@ function App() {
     <div className="App">
 
       <NavBar
-      admin={admin}
-      handleAdmin={handleAdmin}
-      searchInput={searchInput}
-      setSearchInput={setSearchInput}
+        admin={admin}
+        handleAdmin={handleAdmin}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
       />
 
       <Route path="/" exact>
         <FlexItems />
 
         <Offlet
-        games={games}
-        handleModal={handleModal}
-        handleDelete={handleDelete}
-        admin={admin}
-        setCurrentGame={setCurrentGame}
+          games={games}
+          handleModal={handleModal}
+          handleDelete={handleDelete}
+          admin={admin}
+          setCurrentGame={setCurrentGame}
+          handleCart={handleCart}
         />
 
       </Route>
 
       <Route path="/games/:id">
-        <SelectedGameView games={games} />
+        <SelectedGameView
+          games={games}
+          handleModal={handleModal}
+          handleDelete={handleDelete}
+          admin={admin}
+          setCurrentGame={setCurrentGame}
+        />
       </Route>
 
       <Route path="/search">
         <SearchResults
-        games={games}
-        searchInput={searchInput}
-        handleModal={handleModal}
-        handleDelete={handleDelete}
-        admin={admin}
-        setCurrentGame={setCurrentGame}
+          games={games}
+          searchInput={searchInput}
+          handleModal={handleModal}
+          handleDelete={handleDelete}
+          admin={admin}
+          setCurrentGame={setCurrentGame}
         />
       </Route>
 
       <Modal isOpen={modalIsOpen} style={customStyles}>
-        <Modify handleModal={handleModal} currentGame={currentGame} handleModifyGame={handleModifyGame} />
+        <Modify
+          handleModal={handleModal}
+          currentGame={currentGame}
+          handleModifyGame={handleModifyGame}
+          showNotification={showNotification}
+          setShowNotification={setShowNotification}
+        />
       </Modal>
 
       <Route path="/addnewgame">
-        <AddNewGame handleNewGame={handleNewGame}/>
+        <AddNewGame handleNewGame={handleNewGame} showNotification={showNotification} />
+      </Route>
+
+      <Route path="/cart">
+        <Cart cart={cart}/>
       </Route>
     </div>
   );

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { uuid } from 'uuidv4';
+import { v4 as uuid } from "uuid";
+import Notification from "./Notification"
 
-const AddNewGame = ({ handleNewGame}) => {
+const AddNewGame = ({ handleNewGame, showNotification }) => {
 
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
@@ -16,48 +17,78 @@ const AddNewGame = ({ handleNewGame}) => {
         e.preventDefault();
         const newGame = { id: uuid(), name, description, publisher, image, genre, price };
         handleNewGame(newGame);
+        resetFields();
+    }
+
+    const resetFields = () => {
+        setName("");
+        setDescription("");
+        setPublisher("");
+        setImage("");
+        setGenre("");
+        setPrice("");
+    }
+
+    const styles = {
+        flexItem: {
+            marginTop: "1.5rem"
+        }
     }
 
     return (
-        <div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
 
             <form className="add-new-game" onSubmit={newGame}>
 
+                <div style={styles.flexItem}>
+                    <label htmlFor="name-input">Name:</label>
+                    <input
+                        id="name-input"
+                        type="text"
+                        name="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+                </div>
 
-                <label htmlFor="name-input">Name</label>
-                <input
-                    id="name-input"
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                />
+                <div style={styles.flexItem}>
+                    Description:
+                    <input type="text" name="description" value={description}
+                        onChange={(e) => setDescription(e.target.value)} />
+                </div>
 
-            Description
-            <input type="text" name="description" value={description}
-                    onChange={(e) => setDescription(e.target.value)} />
+                <div style={styles.flexItem}>
+                    Publisher:
+                    <input type="text" name="publisher" value={publisher}
+                        onChange={(e) => setPublisher(e.target.value)} />
+                </div>
 
-            Publisher
-            <input type="text" name="publisher" value={publisher}
-                    onChange={(e) => setPublisher(e.target.value)} />
+                <div style={styles.flexItem}>
+                    Image:
+                    <input type="text" name="image" value={image}
+                        onChange={(e) => setImage(e.target.value)} />
+                </div>
 
-            Image
-            <input type="text" name="image" value={image}
-                    onChange={(e) => setImage(e.target.value)} />
+                <div style={styles.flexItem}>
+                    Genre:
+                    <input type="text" name="genre" value={genre}
+                        onChange={(e) => setGenre(e.target.value)} />
+                </div>
 
-            Genre
-            <input type="text" name="genre" value={genre}
-                    onChange={(e) => setGenre(e.target.value)} />
+                <div style={styles.flexItem}>
+                    Price:
+                    <input type="text" name="price" value={price}
+                        onChange={(e) => setPrice(e.target.value)} />
+                </div>
 
-            Price
-            <input type="text" name="price" value={price}
-                    onChange={(e) => setPrice(e.target.value)} />
+                <div style={styles.flexItem}>
+                    <button type="submit" id="btn-submit">
+                        Add new game
+                    </button>
+                </div>
 
-
-            <button type="submit" id="btn-submit">
-                Add new game
-            </button>
+                <Notification showNotification={showNotification} />
 
             </form>
 
