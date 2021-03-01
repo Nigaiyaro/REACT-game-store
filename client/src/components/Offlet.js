@@ -5,11 +5,44 @@ import FilterGenre from "./FilterGenre";
 const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handleCart }) => {
 
     const [selectedGenre, setSelectedGenre] = useState("");
+    const [selectedSorting, setSelectedSorting] = useState("");
 
-    const handleSort = (value) => {
-        /*const filteredArray = games.filter((game) => game.genre === selectedGenre)
-        console.log(filteredArray);*/
+    let filteredGames = [];
+    let sortedGames = [];
+
+    selectedGenre ? filteredGames = games.filter((game) => game.genre === selectedGenre) : filteredGames = games;
+
+    sortedGames = filteredGames;
+
+
+
+    if (selectedSorting === "") { // ASCENDING PRICE
+        sortedGames = filteredGames;
+        console.log("empty check");
+    } else if (selectedSorting === "ascending-name") { // ASCENDING NAME
+        sortedGames = ([...filteredGames].sort(function (a, b) {
+            if (a.name < b.name) { return -1; }
+            if (a.name > b.name) { return 1; }
+            console.log("asc name check");
+            return 0;
+        }));
+    } else if (selectedSorting === "descending-name") { // DESCENDING NAME
+        sortedGames = ([...filteredGames].sort(function (a, b) {
+            if (b.name < a.name) { return -1; }
+            if (b.name > a.name) { return 1; }
+            console.log("des name check");
+            return 0;
+        }));
+    } else if (selectedSorting === "ascending-price") { // ASCENDING PRICE
+        sortedGames = ([...filteredGames].sort((a, b) => b.price - a.price));
+        console.log("asc price check");
+    } else if (selectedSorting === "descending-price") { // DESCENDING PRICE
+        sortedGames = ([...filteredGames].sort((a, b) => a.price - b.price));
+        console.log("asc price check");
     }
+
+
+
 
     if (!games) {
         return <div>Loading...</div>
@@ -26,7 +59,7 @@ const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handl
 
             {/* HERE */}
 
-            <select onChange={(e) => handleSort(e.target.value)} name="sort" id="sort" style={{ fontSize: "1.1rem" }}>
+            <select onChange={(e) => setSelectedSorting(e.target.value)} name="sort" id="sort" style={{ fontSize: "1.1rem" }}>
                 <option value="">Sort by...</option>
                 <option value="ascending-name">A-Z name</option>
                 <option value="descending-name">Z-A name</option>
@@ -40,20 +73,8 @@ const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handl
 
                 {admin && <Card />}
 
-                {selectedGenre ?
-
-                    games.filter((game) => game.genre === selectedGenre).map((game) =>
-                        <Card
-                            game={game}
-                            key={game.id}
-                            handleModal={handleModal}
-                            handleDelete={handleDelete}
-                            admin={admin}
-                            setCurrentGame={setCurrentGame}
-                            handleCart={handleCart}
-                        />)
-                    :
-                    games.map((game) =>
+                {
+                    sortedGames.map((game) =>
                         <Card
                             game={game}
                             key={game.id}
@@ -82,26 +103,28 @@ export default Offlet;
 
 
 /*const handleSort = (value) => {
-    setSortedGames([]);
-    setSort(value);
-
+    console.log(filteredGames);
+    console.log("running, no?");
     if (value === "") { // ASCENDING PRICE
-        setSortedGames([]);
+        sortedGames = filteredGames;
+        console.log("empty check");
     } else if (value === "ascending-name") { // ASCENDING NAME
-        setSortedGames([...offletGames].sort(function (a, b) {
+        sortedGames = ([...filteredGames].sort(function (a, b) {
             if (a.name < b.name) { return -1; }
             if (a.name > b.name) { return 1; }
             return 0;
         }));
     } else if (value === "descending-name") { // DESCENDING NAME
-        setSortedGames([...offletGames].sort(function (a, b) {
+        sortedGames = ([...filteredGames].sort(function (a, b) {
             if (b.name < a.name) { return -1; }
             if (b.name > a.name) { return 1; }
             return 0;
         }));
     } else if (value === "ascending-price") { // ASCENDING PRICE
-        setSortedGames([...offletGames].sort((a, b) => b.price - a.price));
+        sortedGames = ([...filteredGames].sort((a, b) => b.price - a.price));
     } else if (value === "descending-price") { // DESCENDING PRICE
-        setSortedGames([...offletGames].sort((a, b) => a.price - b.price));
+        sortedGames = ([...filteredGames].sort((a, b) => a.price - b.price));
     }
-}*/
+    console.log(sortedGames);
+}
+*/
