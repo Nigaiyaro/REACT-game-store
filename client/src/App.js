@@ -1,9 +1,13 @@
+// IMPORT REACT STUFF OR LIBRARIES
 import './App.css';
 import React, { useState, useEffect } from "react";
 import { Route, useHistory } from "react-router-dom";
 import Modal from 'react-modal';
+
+// GAME SERVICE
 import gameService from "./services/games";
 
+// IMPORT SELF-MADE COMPONENTS
 import NavBar from "./components/NavBar";
 import FlexItems from "./components/FlexItems";
 import Offlet from "./components/Offlet";
@@ -15,6 +19,7 @@ import Cart from "./components/Cart";
 
 function App() {
 
+  // USE HISTORY
   let history = useHistory();
 
   // STATES
@@ -35,13 +40,14 @@ function App() {
     getInitialData();
   }, [])
 
+  // SELF-MADE NOTIFICATION FUNCTIONALITY
   const handleNotification = (msg, show, delay) => {
     setShowNotification({ msg, show });
 
     setTimeout(() => setShowNotification({ msg, show: false }), delay);
   }
 
-  // FUNCTIONS
+  // HANDLER FUNCTIONS
   const handleAdmin = (boolean) => setAdmin(boolean);
   const handleModal = (boolean) => setModalIsOpen(boolean);
 
@@ -68,11 +74,8 @@ function App() {
     setCart([...cart, game]);
   }
 
-  console.log(cart);
-
   // MODAL
   Modal.setAppElement('#modal')
-
 
   // STYLES
   const customStyles = {
@@ -88,6 +91,7 @@ function App() {
     }
   };
 
+  // ----- RETURN SECTION -----
   return (
     <div className="App">
 
@@ -148,7 +152,7 @@ function App() {
       </Route>
 
       <Route path="/cart">
-        <Cart cart={cart} setCart={setCart}/>
+        <Cart cart={cart} setCart={setCart} />
       </Route>
     </div>
   );

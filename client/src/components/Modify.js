@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import Notification from "./Notification"
 
-const Modify = ({
-    handleModal,
-    currentGame,
-    handleModifyGame,
-    showNotification
-}) => {
+    // MAIN FUNCTION + ITS PROPS
+    const Modify = ({
+        handleModal,
+        currentGame,
+        handleModifyGame,
+        showNotification
+    }) => {
 
+    // DE-STRUCTURING OF "currentGame"
     const { id, name, description, publisher, image, genre, price } = currentGame;
 
+    // USESTATES
     const [modifiedId, setModifiedId] = useState(id);
     const [modifiedName, setModifiedName] = useState(name);
     const [modifiedDescription, setModifiedDescription] = useState(description);
@@ -17,8 +20,8 @@ const Modify = ({
     const [modifiedImage, setModifiedImage] = useState(image);
     const [modifiedGenre, setModifiedGenre] = useState(genre);
     const [modifiedPrice, setModifiedPrice] = useState(price);
-    // const [currentUpdateCount, setCurrentUpdateCount] = useState(0);
 
+    // SUBMIT FUNCTION
     const submit = (e) => {
 
         e.preventDefault();
@@ -33,11 +36,9 @@ const Modify = ({
             price: modifiedPrice
         };
         handleModifyGame(modifiedGame);
-        // replace alert with a notification. create "setTimeOut" for the notification so it fades off automatically during the set time.
-        // give delay with a parameter. delay(textVariable, timeVariable).
-        // setCurrentUpdateCount(currentUpdateCount + 1);
     }
 
+    // ----- RETURN SECTION -----
     return (
         <div>
 
@@ -54,20 +55,7 @@ const Modify = ({
 
             <button onClick={() => handleModal(false)}>Close</button><br />
 
-            <Notification showNotification={showNotification}/>
-
-
-            {/*{currentUpdateCount === 1 &&
-                <>
-                    You succesfully updated the entry!
-                </>
-            }
-
-            {currentUpdateCount > 1 &&
-                <>
-                    You have succesfully updated the entry {currentUpdateCount} times!
-                </>
-            }*/}
+            <Notification showNotification={showNotification} />
 
         </div>
     )

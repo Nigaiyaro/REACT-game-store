@@ -1,11 +1,20 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import SimpleSnackBar from "./SimpleSnackBar";
 
+const Card = ({
+    game,
+    handleModal,
+    handleDelete,
+    admin,
+    setCurrentGame,
+    handleCart
+}) => {
 
-const Card = ({ game, handleModal, handleDelete, admin, setCurrentGame, handleCart }) => {
-
+    // USEHISTORY
     let history = useHistory();
 
+    // CSS STYLES
     const styles = {
         addNewGameButton: {
             width: "100%",
@@ -13,6 +22,7 @@ const Card = ({ game, handleModal, handleDelete, admin, setCurrentGame, handleCa
         }
     }
 
+    // FUNCTIONS
     const addNewGame = () => {
         history.push("/addnewgame");
     }
@@ -22,6 +32,7 @@ const Card = ({ game, handleModal, handleDelete, admin, setCurrentGame, handleCa
         setCurrentGame(game);
     }
 
+    // ----- RETURN SECTION -----
     return game ? (
 
         <div className="card-container">
@@ -41,43 +52,32 @@ const Card = ({ game, handleModal, handleDelete, admin, setCurrentGame, handleCa
 
                 {admin ?
                     <>
-                        <div>
+                        <div> {/* MODIFY GAME -BUTTON */}
                             <button onClick={handleModify}>Modify</button>
                         </div>
 
-                        <div>
+                        <div> {/* DELETE GAME -BUTTON */}
                             <button onClick={() => handleDelete(game.id)}>Delete</button>
                         </div>
-
                     </>
 
                     :
 
                     <>
-                        <div>
-                            <button onClick={() => handleCart(game)}>Add to cart</button>
+                        <div> {/* ADD TO CART -BUTTON */}
+                            <SimpleSnackBar handleCart={handleCart} game={game}/>
                         </div>
+                        
                     </>
                 }
-
-                {/*admin &&
-                    <>
-                        <div>
-                            <button onClick={handleModify}>Modify</button>
-                        </div>
-
-                        <div>
-                            <button onClick={() => handleDelete(game.id)}>Delete</button>
-                        </div>
-
-                    </>
-                */}
             </div>
         </div>
+    )
 
-    ) :
+        :
+
         (
-            <div className="card-container"> {/*ADD NEW GAME CONTAINER CARD*/}
+            <div className="card-container"> {/* ADD NEW GAME -BUTTON */}
                 <button onClick={addNewGame} style={styles.addNewGameButton}>Add new game</button>
             </div>
         )

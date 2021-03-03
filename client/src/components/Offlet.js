@@ -2,8 +2,18 @@ import React, { useState } from "react";
 import Card from "../components/Card";
 import FilterGenre from "./FilterGenre";
 
-const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handleCart }) => {
+    const Offlet = ({
+        games,
+        handleModal,
+        handleDelete,
+        admin,
+        setCurrentGame,
+        handleCart,
+        handleNotification,
+        showNotification
+    }) => {
 
+    // CSS STYLES
     const styles = {
         sort:
         {
@@ -15,18 +25,19 @@ const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handl
         }
     }
 
+    // USESTATES
     const [selectedGenre, setSelectedGenre] = useState("");
     const [selectedSorting, setSelectedSorting] = useState("");
 
+    // INSTANCIATING ARRAYS
     let filteredGames = [];
     let sortedGames = [];
 
-    selectedGenre ? filteredGames = games.filter((game) => game.genre === selectedGenre) : filteredGames = games;
     // IF THERE IS GENRE SELECTED, FILTER THROUGH IT. IF NOT, REMAIN THE SAME.
-
-
-
-    if (selectedSorting === "") { // ASCENDING PRICE
+    selectedGenre ? filteredGames = games.filter((game) => game.genre === selectedGenre) : filteredGames = games;
+    
+    // SORTING FUNCTIONALITY
+    if (selectedSorting === "") { // IF NO SORTING
         sortedGames = filteredGames;
         console.log("empty check");
     } else if (selectedSorting === "ascending-name") { // ASCENDING NAME
@@ -51,13 +62,13 @@ const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handl
         console.log("asc price check");
     }
 
-
-
-    if (!games) { // IF GAMES ARE NOT FOUND. ERROR CHECKING.
+    // IF GAMES ARE NOT FOUND. ERROR CHECKING.
+    if (!games) { 
         return <div>Loading...</div>
     }
 
-    return ( // RETURN SECTION
+    // ----- RETURN SECTION -----
+    return (
         <div className="all-video-games-container">
 
             <div className="all-video-games-title">
@@ -90,6 +101,8 @@ const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handl
                             admin={admin}
                             setCurrentGame={setCurrentGame}
                             handleCart={handleCart}
+                            handleNotification={handleNotification}
+                            showNotification={showNotification}
                         />)
                 }
             </div>
