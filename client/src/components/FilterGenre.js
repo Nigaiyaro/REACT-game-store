@@ -5,7 +5,7 @@ const FilterGenre = ({ games, setSelectedGenre }) => {
     const genres = [...new Set(games.map(game => game.genre))]; // takes only unique entries with "...new Set"
 
     return (
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "0.8rem" }}>
             <select onChange={(e) => setSelectedGenre(e.target.value)} name="genres" id="genres" style={{ fontSize: "1.1rem" }}>
 
                 <option value="">Filter by genre</option>

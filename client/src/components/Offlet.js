@@ -4,6 +4,17 @@ import FilterGenre from "./FilterGenre";
 
 const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handleCart }) => {
 
+    const styles = {
+        sort:
+        {
+            display: "flex",
+            justifyContent: "center",
+            fontSize: "1.1rem",
+            marginTop: "1rem",
+            marginBottom: "1rem"
+        }
+    }
+
     const [selectedGenre, setSelectedGenre] = useState("");
     const [selectedSorting, setSelectedSorting] = useState("");
 
@@ -55,13 +66,15 @@ const Offlet = ({ games, handleModal, handleDelete, admin, setCurrentGame, handl
 
             <FilterGenre games={games} setSelectedGenre={setSelectedGenre} /> {/* FUNCTIONALITY OF FILTER BUTTON */}
 
-            <select onChange={(e) => setSelectedSorting(e.target.value)} name="sort" id="sort" style={{ fontSize: "1.1rem" }}>
-                <option value="">Sort by...</option>
-                <option value="ascending-name">A-Z name</option>
-                <option value="descending-name">Z-A name</option>
-                <option value="ascending-price">ascending price</option>
-                <option value="descending-price">descending price</option>
-            </select>
+            <div style={styles.sort}>
+                <select onChange={(e) => setSelectedSorting(e.target.value)} name="sort" id="sort">
+                    <option value="">Sort by...</option>
+                    <option value="ascending-name">A-Z name</option>
+                    <option value="descending-name">Z-A name</option>
+                    <option value="ascending-price">ascending price</option>
+                    <option value="descending-price">descending price</option>
+                </select>
+            </div>
 
             <div className="all-video-games-content">
 

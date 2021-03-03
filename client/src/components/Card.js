@@ -58,7 +58,7 @@ const Card = ({ game, handleModal, handleDelete, admin, setCurrentGame, handleCa
                             <button onClick={() => handleCart(game)}>Add to cart</button>
                         </div>
                     </>
-                    }
+                }
 
                 {/*admin &&
                     <>
@@ -73,7 +73,6 @@ const Card = ({ game, handleModal, handleDelete, admin, setCurrentGame, handleCa
                     </>
                 */}
             </div>
-
         </div>
 
     ) :

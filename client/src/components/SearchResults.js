@@ -9,20 +9,24 @@ const SearchResults = ({ games, searchInput, handleModal, handleDelete, admin, s
     console.log(searchInput);
     console.log("Filtered Games:");
     console.log(filteredGames);
-    
+
     return (
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            {filteredGames.map((game) =>
-            <Card
-            game={game}
-            key={game.id}
-            handleModal={handleModal}
-            handleDelete={handleDelete}
-            admin={admin}
-            setCurrentGame={setCurrentGame}
-        />
-        )}
-        </div>
+        <>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                {admin && <Card />}
+
+                {filteredGames.map((game) =>
+                    <Card
+                        game={game}
+                        key={game.id}
+                        handleModal={handleModal}
+                        handleDelete={handleDelete}
+                        admin={admin}
+                        setCurrentGame={setCurrentGame}
+                    />
+                )}
+            </div>
+        </>
     )
 }
 

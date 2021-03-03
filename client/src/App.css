@@ -24,8 +24,7 @@
     display: flex; /* or inline-flex */
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 50px;
+    justify-content: center;
 }
 
 .all-video-games-container {
