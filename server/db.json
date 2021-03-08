@@ -155,15 +155,6 @@
     },
     {
       "id": 18,
-      "name": "DELETE-DUMMY",
-      "description": "DEL.",
-      "publisher": "DEL.",
-      "image": "https://cdn.pixabay.com/photo/2018/03/30/15/11/poly-3275592_960_720.jpg",
-      "genre": "VR",
-      "price": 0
-    },
-    {
-      "id": 19,
       "name": "DELETE-DUMMY-LMAO",
       "description": "DEL.",
       "publisher": "DEL.",

@@ -31,14 +31,16 @@ const AddNewGame = ({ handleNewGame, showNotification }) => {
 
     const styles = {
         flexItem: {
-            marginTop: "1.5rem"
+            marginTop: "1.5rem",
+            display: "flex",
+            justifyContent: "space-between"
         }
     }
 
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
 
-            <form className="add-new-game" onSubmit={newGame}>
+            <form style={{ width: "20rem", marginTop: "12rem" }} className="add-new-game" onSubmit={newGame}>
 
                 <div style={styles.flexItem}>
                     <label htmlFor="name-input">Name:</label>

@@ -38,22 +38,29 @@ import Notification from "./Notification"
         handleModifyGame(modifiedGame);
     }
 
+    const styles = {
+        flexItem: {
+            marginTop: "1rem",
+            display: "flex",
+            justifyContent: "space-between"
+        }
+    }
+
     // ----- RETURN SECTION -----
     return (
-        <div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
 
-            <form onSubmit={(e) => submit(e)}>
-                <div>ID: <input type="text" name="id" value={modifiedId} onChange={(e) => setModifiedId(e.target.value)} /></div>
-                <div>Name: <input type="text" name="name" value={modifiedName} onChange={(e) => setModifiedName(e.target.value)} /></div>
-                <div>Description: <input type="text" name="description" value={modifiedDescription} onChange={(e) => setModifiedDescription(e.target.value)} /></div>
-                <div>Publisher: <input type="text" name="publisher" value={modifiedPublisher} onChange={(e) => setModifiedPublisher(e.target.value)} /></div>
-                <div>Image URL: <input type="text" name="image" value={modifiedImage} onChange={(e) => setModifiedImage(e.target.value)} /></div>
-                <div>Genre: <input type="text" name="genre" value={modifiedGenre} onChange={(e) => setModifiedGenre(e.target.value)} /></div>
-                <div>Price: <input type="text" name="price" value={modifiedPrice} onChange={(e) => setModifiedPrice(e.target.value)} /></div>
-                <input type="submit" value="Modify" />
+            <form style={{ width: "20rem" }} onSubmit={(e) => submit(e)}>
+                <div style={styles.flexItem}>ID: <input type="text" name="id" value={modifiedId} onChange={(e) => setModifiedId(e.target.value)} /></div>
+                <div style={styles.flexItem}>Name: <input type="text" name="name" value={modifiedName} onChange={(e) => setModifiedName(e.target.value)} /></div>
+                <div style={styles.flexItem}>Description: <input type="text" name="description" value={modifiedDescription} onChange={(e) => setModifiedDescription(e.target.value)} /></div>
+                <div style={styles.flexItem}>Publisher: <input type="text" name="publisher" value={modifiedPublisher} onChange={(e) => setModifiedPublisher(e.target.value)} /></div>
+                <div style={styles.flexItem}>Image URL: <input type="text" name="image" value={modifiedImage} onChange={(e) => setModifiedImage(e.target.value)} /></div>
+                <div style={styles.flexItem}>Genre: <input type="text" name="genre" value={modifiedGenre} onChange={(e) => setModifiedGenre(e.target.value)} /></div>
+                <div style={styles.flexItem}>Price: <input type="text" name="price" value={modifiedPrice} onChange={(e) => setModifiedPrice(e.target.value)} /></div>
+                <input style={styles.flexItem} type="submit" value="Modify" />
+                <button style={{ width: "10rem", marginTop: "1rem" }} onClick={() => handleModal(false)}>Close</button>
             </form>
-
-            <button onClick={() => handleModal(false)}>Close</button><br />
 
             <Notification showNotification={showNotification} />
 

@@ -25,7 +25,7 @@ export default function SimpleSnackbar({ handleCart, game }) {
       <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'left',
+          horizontal: 'center',
         }}
         open={open}
         autoHideDuration={1500}
