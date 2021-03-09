@@ -3,6 +3,8 @@ import ExposurePlus1Icon from '@material-ui/icons/ExposurePlus1';
 import ExposureNeg1Icon from '@material-ui/icons/ExposureNeg1';
 import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
 
+import Box from '@material-ui/core/Box';
+
 const Cart = ({ cart, setCart }) => {
 
     // INSTANCIATING TOTALSUM AS 0
@@ -75,12 +77,10 @@ const Cart = ({ cart, setCart }) => {
     const styles = {
         card: {
             display: "flex",
-            marginBottom: "10px",
             justifyContent: "space-between",
             padding: "5px",
-            border: "2px solid black",
-            borderRadius: "5px",
-
+            border: "1px solid black",
+            borderRadius: "5px"
         }
     }
 
@@ -88,41 +88,49 @@ const Cart = ({ cart, setCart }) => {
     return (
         <div style={{ display: "flex", flexDirection: "column", width: "40rem", margin: "auto" }}>
             <div style={{ marginBottom: "1.5rem", textAlign: "center" }}>Shopping cart</div>
+
             {uniquedArray.map((game, i) =>
-                <div key={i} style={styles.card}>
+                <Box boxShadow={5} style={{ marginBottom: "1rem" }}>
+                    <div key={i} style={styles.card}>
 
-                    <div style={{ display: "flex", justifyContent: "space-between", width: "25rem" }}>
-                        <div>{counts[game.id]} x</div>
-                        <div style={{ paddingRight: "1rem" }}>{`${game.name} ${game.price}€`}</div>
+                        <div style={{ display: "flex", justifyContent: "space-between", width: "25rem" }}>
+                            <div>{counts[game.id]} x</div>
+                            <div style={{ paddingRight: "1rem" }}>{`${game.name} ${game.price}€`}</div>
+                        </div>
+
+                        <div style={{ display: "flex", width: "8rem", justifyContent: "space-between" }}>
+                            <div>
+                                <button onClick={() => addProduct(game)}>
+                                    <ExposurePlus1Icon />
+                                </button>
+                            </div>
+
+                            <div>
+                                <button onClick={() => deleteProduct(game.id)}>
+                                    <ExposureNeg1Icon />
+                                </button>
+
+                            </div>
+
+                            <div>
+                                <button onClick={() => deleteProducts(game)}>
+                                    <RemoveShoppingCartIcon />
+                                </button>
+                            </div>
+                        </div>
                     </div>
-
-                    <div style={{ display: "flex", width: "8rem", justifyContent: "space-between" }}>
-                        <div>
-                            <button onClick={() => addProduct(game)}>
-                                <ExposurePlus1Icon />
-                            </button>
-                        </div>
-
-                        <div>
-                            <button onClick={() => deleteProduct(game.id)}>
-                                <ExposureNeg1Icon />
-                            </button>
-
-                        </div>
-
-                        <div>
-                            <button onClick={() => deleteProducts(game)}>
-                                <RemoveShoppingCartIcon />
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                </Box>
             )}
 
             {cart.length ?
-                <div style={{ marginTop: "2rem" }}>Total price: {(Math.round(totalSum * 100) / 100).toFixed(2)}<button>To checkout</button></div>
+                <div style={{ marginTop: "2rem", textAlign: "center" }}>
+                    <div>Total price: {(Math.round(totalSum * 100) / 100).toFixed(2)}</div>
+                    <div style={{ marginTop: "1rem" }}><button>To checkout</button></div>
+                </div>
                 :
-                <div style={{ textAlign: "center" }}>Your cart is empty!</div>
+                <div style={{ textAlign: "center" }}>
+                    Your cart is empty!
+                </div>
             }
 
 

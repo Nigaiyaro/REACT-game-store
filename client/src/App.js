@@ -152,7 +152,7 @@ function App() {
       </Route>
 
       <Route path="/cart">
-        <Cart cart={cart} setCart={setCart} />
+        <Cart cart={cart} setCart={setCart} boxShadow={10} />
       </Route>
     </div>
   );

@@ -99,18 +99,3 @@ const AddNewGame = ({ handleNewGame, showNotification }) => {
 }
 
 export default AddNewGame;
-
-
-/*
-
-<form onSubmit={(event) => submit(event)}>
-                <div>Title: <input type="text" name="name" /></div>
-                <div>Description: <input type="text" name="description" /></div>
-                <div>Publisher: <input type="text" name="publisher" /></div>
-                <div>Image URL: <input type="text" name="image" /></div>
-                <div>Genre: <input type="text" name="genre" /></div>
-                <div>Price: <input type="text" name="price" /></div>
-                <input type="submit" value="Submit" />
-</form>
-
-*/
