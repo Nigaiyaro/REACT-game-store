@@ -13,9 +13,14 @@ const SearchResults = ({ games, searchInput, handleModal, handleDelete, admin, s
     return (
         <>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+
                 {admin && <Card />}
 
-                {filteredGames.map((game) =>
+                {
+                
+                (searchInput === "") ? "Search yielded no results." :
+                
+                (filteredGames.map((game) =>
                     <Card
                         game={game}
                         key={game.id}
@@ -24,7 +29,8 @@ const SearchResults = ({ games, searchInput, handleModal, handleDelete, admin, s
                         admin={admin}
                         setCurrentGame={setCurrentGame}
                     />
-                )}
+                ))}
+
             </div>
         </>
     )

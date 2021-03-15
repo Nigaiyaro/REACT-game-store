@@ -50,7 +50,7 @@ import Notification from "./Notification"
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
 
-            <form style={{ width: "20rem" }} onSubmit={(e) => submit(e)}>
+            <form style={{ width: "20rem", marginTop: "25px" }} onSubmit={(e) => submit(e)}>
                 <div style={styles.flexItem}>ID: <input type="text" name="id" value={modifiedId} onChange={(e) => setModifiedId(e.target.value)} /></div>
                 <div style={styles.flexItem}>Name: <input type="text" name="name" value={modifiedName} onChange={(e) => setModifiedName(e.target.value)} /></div>
                 <div style={styles.flexItem}>Description: <input type="text" name="description" value={modifiedDescription} onChange={(e) => setModifiedDescription(e.target.value)} /></div>
@@ -58,8 +58,14 @@ import Notification from "./Notification"
                 <div style={styles.flexItem}>Image URL: <input type="text" name="image" value={modifiedImage} onChange={(e) => setModifiedImage(e.target.value)} /></div>
                 <div style={styles.flexItem}>Genre: <input type="text" name="genre" value={modifiedGenre} onChange={(e) => setModifiedGenre(e.target.value)} /></div>
                 <div style={styles.flexItem}>Price: <input type="text" name="price" value={modifiedPrice} onChange={(e) => setModifiedPrice(e.target.value)} /></div>
-                <input style={styles.flexItem} type="submit" value="Modify" />
-                <button style={{ width: "10rem", marginTop: "1rem" }} onClick={() => handleModal(false)}>Close</button>
+
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                <input style={{ width: "10rem", marginTop: "3rem" }} type="submit" value="Modify" />
+                </div>
+
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                <button style={{  width: "10rem", marginTop: "1rem" }} onClick={() => handleModal(false)}>Close</button>
+                </div>
             </form>
 
             <Notification showNotification={showNotification} />

@@ -1,6 +1,6 @@
 import React from "react";
-import ExposurePlus1Icon from '@material-ui/icons/ExposurePlus1';
-import ExposureNeg1Icon from '@material-ui/icons/ExposureNeg1';
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
 
 import Box from '@material-ui/core/Box';
@@ -87,7 +87,7 @@ const Cart = ({ cart, setCart }) => {
     // ----- RETURN SECTION -----
     return (
         <div style={{ display: "flex", flexDirection: "column", width: "40rem", margin: "auto" }}>
-            <div style={{ marginBottom: "1.5rem", textAlign: "center" }}>Shopping cart</div>
+            <div style={{ marginBottom: "1.5rem", textAlign: "center", marginTop: "2rem" }}>Shopping cart</div>
 
             {uniquedArray.map((game, i) =>
                 <Box boxShadow={5} style={{ marginBottom: "1rem" }}>
@@ -101,20 +101,20 @@ const Cart = ({ cart, setCart }) => {
                         <div style={{ display: "flex", width: "8rem", justifyContent: "space-between" }}>
                             <div>
                                 <button onClick={() => addProduct(game)}>
-                                    <ExposurePlus1Icon />
+                                    <AddIcon />
                                 </button>
                             </div>
 
                             <div>
                                 <button onClick={() => deleteProduct(game.id)}>
-                                    <ExposureNeg1Icon />
+                                    <RemoveIcon />
                                 </button>
 
                             </div>
 
                             <div>
                                 <button onClick={() => deleteProducts(game)}>
-                                    <RemoveShoppingCartIcon />
+                                    <RemoveShoppingCartIcon style={{ height: "80%" }} />
                                 </button>
                             </div>
                         </div>

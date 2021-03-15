@@ -93,7 +93,8 @@ import FilterGenre from "./FilterGenre";
 
                 {
                     sortedGames.map((game) =>
-                        <Card elevation={2}
+
+                        <Card
                             game={game}
                             key={game.id}
                             handleModal={handleModal}

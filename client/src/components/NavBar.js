@@ -33,25 +33,30 @@ const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
         <div style={styles.navigation}>
 
             <div style={styles.imageContainer}>
+
+                {/* LOGO */}
                 <Link to="/">
                     <img src={Logo} alt="CastleGames" style={{ height: "100%", paddingLeft: "1rem" }} />
                 </Link>
 
+                {/* LOGO TEXT */}
                 <p className="websiteName" style={{ paddingLeft: "1rem" }}>Castle Games LLC.</p>
             </div>
 
-            <div style={{ display: "flex", border: "1px solid orange", width: "40%" }}>
+            <div style={{ display: "flex", width: "40%" }}>
 
+                {/* SEARCH VALUE FIELD */}
                 <input type="text" name="search" value={searchInput}
-                    style={{ height: "3rem", width: "80%"}}
+                    style={{ height: "3rem", width: "80%", paddingLeft: "1rem"}}
                     onChange={(e) => setSearchInput(e.target.value)} />
 
+                {/* SEARCH BUTTON + ICON */}
                 <button onClick={handleSearch} style={{ height: "3rem", width: "20%" }}>
                     <SearchIcon />
                 </button>
-                {/* transform: "scale(2)" */}
             </div>
 
+            {/* SWITCH TO CUSTOMER/ADMIN BUTTON */}
             <button onClick={() => handleAdmin(!admin)} style={{ marginRight: "3rem" }}>{admin ? "Switch to customer ->" : "Switch to admin ->"}</button>
 
             <Link to="/cart">

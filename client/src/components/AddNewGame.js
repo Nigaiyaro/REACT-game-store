@@ -40,7 +40,7 @@ const AddNewGame = ({ handleNewGame, showNotification }) => {
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
 
-            <form style={{ width: "20rem", marginTop: "12rem" }} className="add-new-game" onSubmit={newGame}>
+            <form style={{ width: "30rem", marginTop: "3rem", padding: "50px", border: "1px solid black", boxShadow: "1px 1px 3px black" }} className="add-new-game" onSubmit={newGame}>
 
                 <div style={styles.flexItem}>
                     <label htmlFor="name-input">Name:</label>
@@ -84,7 +84,7 @@ const AddNewGame = ({ handleNewGame, showNotification }) => {
                         onChange={(e) => setPrice(e.target.value)} />
                 </div>
 
-                <div style={styles.flexItem}>
+                <div style={{ marginTop: "3rem", display: "flex", justifyContent: "center"}}>
                     <button type="submit" id="btn-submit">
                         Add new game
                     </button>
