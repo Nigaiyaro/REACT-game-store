@@ -29,6 +29,11 @@ import FilterGenre from "./FilterGenre";
     const [selectedGenre, setSelectedGenre] = useState("");
     const [selectedSorting, setSelectedSorting] = useState("");
 
+    // IF GAMES ARE NOT FOUND. ERROR CHECKING.
+    if (!games) { 
+        return <div>Loading...</div>
+    }
+
     // INSTANCIATING ARRAYS
     let filteredGames = [];
     let sortedGames = [];
@@ -39,33 +44,21 @@ import FilterGenre from "./FilterGenre";
     // SORTING FUNCTIONALITY
     if (selectedSorting === "") { // IF NO SORTING
         sortedGames = filteredGames;
-        console.log("empty check");
+
     } else if (selectedSorting === "ascending-name") { // ASCENDING NAME
-        sortedGames = ([...filteredGames].sort(function (a, b) {
-            if (a.name < b.name) { return -1; }
-            if (a.name > b.name) { return 1; }
-            console.log("asc name check");
-            return 0;
-        }));
+        sortedGames = ([...filteredGames].sort((a, b) => a.name === b.name ? 0 : a.name < b.name ? -1 : 1));
+
     } else if (selectedSorting === "descending-name") { // DESCENDING NAME
-        sortedGames = ([...filteredGames].sort(function (a, b) {
-            if (b.name < a.name) { return -1; }
-            if (b.name > a.name) { return 1; }
-            console.log("des name check");
-            return 0;
-        }));
+        sortedGames = ([...filteredGames].sort((a, b) => a.name === b.name ? 0 : a.name < b.name ? 1 : -1));
+
     } else if (selectedSorting === "ascending-price") { // ASCENDING PRICE
         sortedGames = ([...filteredGames].sort((a, b) => b.price - a.price));
-        console.log("asc price check");
+
     } else if (selectedSorting === "descending-price") { // DESCENDING PRICE
         sortedGames = ([...filteredGames].sort((a, b) => a.price - b.price));
-        console.log("asc price check");
     }
 
-    // IF GAMES ARE NOT FOUND. ERROR CHECKING.
-    if (!games) { 
-        return <div>Loading...</div>
-    }
+    
 
     // ----- RETURN SECTION -----
     return (

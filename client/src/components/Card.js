@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import SimpleSnackBar from "./SimpleSnackBar";
+import Button from '@material-ui/core/Button';
 
 const Card = ({
     game,
@@ -35,43 +36,43 @@ const Card = ({
     // ----- RETURN SECTION -----
     return game ? (
         <div className="card-container">
-            
-                <Link to={`/games/${game.id}`}>
-                    <div className="card-img-container">
-                        <img className="card-img" src={game.image} alt={game.name} style={{ height: "140px" }}/>
-                    </div>
-                </Link>
 
-                <div className="card-details-container">
-                    <div className="card-name">
-                        {game.name}
-                    </div>
-                    <div className="card-price">
-                        {game.price} €
+            <Link to={`/games/${game.id}`}>
+                <div className="card-img-container">
+                    <img className="card-img" src={game.image} alt={game.name} style={{ width: '100%', height: '20vh' }} />
+                </div>
+            </Link>
+
+            <div className="card-details-container">
+                <div className="card-name">
+                    {game.name}
+                </div>
+                <div className="card-price">
+                    {game.price} €
                 </div>
 
-                    {admin ?
-                        <>
-                            <div> {/* MODIFY GAME -BUTTON */}
-                                <button onClick={handleModify}>Modify</button>
-                            </div>
+                {admin ?
+                    <>
+                        <div> {/* MODIFY GAME -BUTTON */}
+                                <Button onClick={handleModify}>Modify</Button>
+                        </div>
 
-                            <div> {/* DELETE GAME -BUTTON */}
-                                <button onClick={() => handleDelete(game.id)}>Delete</button>
-                            </div>
-                        </>
+                        <div> {/* DELETE GAME -BUTTON */}
+                            <Button onClick={() => handleDelete(game.id)}>Delete</Button>
+                        </div>
+                    </>
 
-                        :
+                    :
 
-                        <>
-                            <div> {/* ADD TO CART -BUTTON */}
-                                <SimpleSnackBar handleCart={handleCart} game={game} />
-                            </div>
+                    <>
+                        <div> {/* ADD TO CART -BUTTON */}
+                            <SimpleSnackBar handleCart={handleCart} game={game} />
+                        </div>
 
-                        </>
-                    }
-                </div>
-                
+                    </>
+                }
+            </div>
+
         </div>
 
     )

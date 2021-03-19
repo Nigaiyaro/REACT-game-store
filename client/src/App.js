@@ -134,6 +134,7 @@ function App() {
           handleDelete={handleDelete}
           admin={admin}
           setCurrentGame={setCurrentGame}
+          handleCart={handleCart}
         />
       </Route>
 

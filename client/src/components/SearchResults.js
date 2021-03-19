@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../components/Card"
 
-const SearchResults = ({ games, searchInput, handleModal, handleDelete, admin, setCurrentGame }) => {
+const SearchResults = ({ games, searchInput, handleModal, handleDelete, admin, setCurrentGame, handleCart }) => {
     const filteredGames = games.filter((game) => game.name.toLowerCase().includes(searchInput.toLowerCase()));
 
     console.log("----- SearchResults.js -----");
@@ -28,6 +28,7 @@ const SearchResults = ({ games, searchInput, handleModal, handleDelete, admin, s
                         handleDelete={handleDelete}
                         admin={admin}
                         setCurrentGame={setCurrentGame}
+                        handleCart={handleCart}
                     />
                 ))}
 

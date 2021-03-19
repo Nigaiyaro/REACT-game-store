@@ -2,6 +2,7 @@ import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import Button from '@material-ui/core/Button';
 
 export default function SimpleSnackbar({ handleCart, game }) {
   const [open, setOpen] = React.useState(false);
@@ -21,7 +22,7 @@ export default function SimpleSnackbar({ handleCart, game }) {
 
   return (
     <div>
-      <button onClick={handleClick}>Add to cart</button>
+      <Button onClick={handleClick}>Add to cart</Button>
       <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
