@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
 import FilterGenre from "./FilterGenre";
 
-    const Offlet = ({
-        games,
-        handleModal,
-        handleDelete,
-        admin,
-        setCurrentGame,
-        handleCart,
-        handleNotification,
-        showNotification
-    }) => {
+const Offlet = ({
+    games,
+    handleModal,
+    handleDelete,
+    admin,
+    setCurrentGame,
+    handleCart,
+    handleNotification,
+    showNotification
+}) => {
 
     // CSS STYLES
     const styles = {
@@ -28,37 +28,36 @@ import FilterGenre from "./FilterGenre";
     // USESTATES
     const [selectedGenre, setSelectedGenre] = useState("");
     const [selectedSorting, setSelectedSorting] = useState("");
-
-    // IF GAMES ARE NOT FOUND. ERROR CHECKING.
-    if (!games) { 
-        return <div>Loading...</div>
-    }
-
-    // INSTANCIATING ARRAYS
-    let filteredGames = [];
-    let sortedGames = [];
+    const [filteredGames, setFilteredGames] = useState([]);
+    const [sortedGames, setSortedGames] = useState([]);
 
     // IF THERE IS GENRE SELECTED, FILTER THROUGH IT. IF NOT, REMAIN THE SAME.
-    selectedGenre ? filteredGames = games.filter((game) => game.genre === selectedGenre) : filteredGames = games;
-    
-    // SORTING FUNCTIONALITY
-    if (selectedSorting === "") { // IF NO SORTING
-        sortedGames = filteredGames;
+    useEffect(() => {
+        selectedGenre ? setFilteredGames(games.filter((game) => game.genre === selectedGenre)) : setFilteredGames(games);
+    }, [games, selectedGenre]);
 
-    } else if (selectedSorting === "ascending-name") { // ASCENDING NAME
-        sortedGames = ([...filteredGames].sort((a, b) => a.name === b.name ? 0 : a.name < b.name ? -1 : 1));
+    useEffect(() => {
+        if (selectedSorting === "") { // IF NO SORTING
+            setSortedGames(filteredGames);
 
-    } else if (selectedSorting === "descending-name") { // DESCENDING NAME
-        sortedGames = ([...filteredGames].sort((a, b) => a.name === b.name ? 0 : a.name < b.name ? 1 : -1));
+        } else if (selectedSorting === "ascending-name") { // ASCENDING NAME
+            setSortedGames([...filteredGames].sort((a, b) => a.name === b.name ? 0 : a.name < b.name ? -1 : 1));
 
-    } else if (selectedSorting === "ascending-price") { // ASCENDING PRICE
-        sortedGames = ([...filteredGames].sort((a, b) => b.price - a.price));
+        } else if (selectedSorting === "descending-name") { // DESCENDING NAME
+            setSortedGames([...filteredGames].sort((a, b) => a.name === b.name ? 0 : a.name < b.name ? 1 : -1));
 
-    } else if (selectedSorting === "descending-price") { // DESCENDING PRICE
-        sortedGames = ([...filteredGames].sort((a, b) => a.price - b.price));
+        } else if (selectedSorting === "ascending-price") { // ASCENDING PRICE
+            setSortedGames([...filteredGames].sort((a, b) => b.price - a.price));
+
+        } else if (selectedSorting === "descending-price") { // DESCENDING PRICE
+            setSortedGames([...filteredGames].sort((a, b) => a.price - b.price));
+        }
+    }, [filteredGames, selectedSorting])
+
+    // IF GAMES ARE NOT FOUND. ERROR CHECKING.
+    if (!games) {
+        return <div>Loading...</div>
     }
-
-    
 
     // ----- RETURN SECTION -----
     return (

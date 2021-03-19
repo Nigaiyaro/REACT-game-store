@@ -34,8 +34,7 @@ function App() {
   // USE EFFECT
   useEffect(() => {
     const getInitialData = async () => {
-      const response = await gameService.getData();
-      setGames(response);
+      setGames(await gameService.getData());
     }
     getInitialData();
   }, [])
