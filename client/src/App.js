@@ -35,7 +35,6 @@ function App() {
   useEffect(() => {
     const getInitialData = async () => {
       setGames(await gameService.getData());
-      console.log("KULLIA KANSALLE");
     }
     getInitialData();
   }, [])
