@@ -4,7 +4,7 @@ const baseURL = "http://localhost:3000/games";
 
 const getData = async() => {
     const response = await axios.get(baseURL);
-    console.log(`${baseURL}1`) //     http://localhost:3000/games/1     games.js:7 
+    console.log(`${baseURL}/1`) //     http://localhost:3000/games/1     games.js:7 
     return response.data;
 }
 

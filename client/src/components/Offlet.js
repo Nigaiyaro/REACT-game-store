@@ -11,7 +11,7 @@ const Offlet = ({
     handleCart,
     handleNotification,
     showNotification
-}) => {
+}) => { // arrow notation
 
     // CSS STYLES
     const styles = {

@@ -33,7 +33,7 @@ const Card = ({
         setCurrentGame(game);
     }
 
-    // ----- RETURN SECTION -----
+    // ----- RETURN SECTION -----                                           // USE <LINK> HERE
     return game ? (
         <div className="card-container">
 
@@ -81,7 +81,7 @@ const Card = ({
 
         (
             <div className="card-container"> {/* ADD NEW GAME -BUTTON */}
-                <button onClick={addNewGame} style={styles.addNewGameButton}>Add new game</button>
+                <Button onClick={addNewGame} style={styles.addNewGameButton}>Add new game</Button>
             </div>
         )
 }

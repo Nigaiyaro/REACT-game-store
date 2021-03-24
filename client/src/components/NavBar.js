@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import Logo from "./images/icons8-castle-64.png";
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Button from '@material-ui/core/Button';
 
 const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
 
@@ -57,7 +58,7 @@ const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
             </div>
 
             {/* SWITCH TO CUSTOMER/ADMIN BUTTON */}
-            <button onClick={() => handleAdmin(!admin)} style={{ marginRight: "3rem" }}>{admin ? "Switch to customer ->" : "Switch to admin ->"}</button>
+            <Button onClick={() => handleAdmin(!admin)} style={{ marginRight: "3rem" }}>{admin ? "Switch to customer ->" : "Switch to admin ->"}</Button>
 
             <Link to="/cart">
                 <ShoppingCartIcon style={{ marginRight: "3rem" }}/>

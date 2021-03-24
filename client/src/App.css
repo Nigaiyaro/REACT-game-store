@@ -56,10 +56,6 @@
     justify-content: center;
 }
 
-.MuiButton-root {
-    background-color: black;
-}
-
 .game-selected-img {
     width: 40%;
     border-radius: 15px;
