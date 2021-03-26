@@ -1,20 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const FilterGenre = ({ games, setSelectedGenre }) => {
 
     // CREATES GENRES BUTTON CONTENT FROM THE GAMES (VR, Action, ETC)
     const genres = [...new Set(games.map(game => game.genre))]; // takes only unique entries with "...new Set"
 
+    const genresWithFilterBy = ["filter by genre", ...genres]
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [genreTitle, setGenreTitle] = useState("FILTER BY GENRE");
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = (currentGenre) => {
+        setSelectedGenre(currentGenre);
+        setGenreTitle(currentGenre.toUpperCase());
+        setAnchorEl(null);
+    };
+
     // ----- RETURN SECTION -----
     return (
         <div style={{ display: "flex", justifyContent: "center", marginTop: "0.8rem" }}>
-            <select onChange={(e) => setSelectedGenre(e.target.value)} name="genres" id="genres" style={{ fontSize: "1.1rem" }}>
 
-                <option value="">Filter by genre</option>
+            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                {genreTitle}
+            </Button>
 
-                {genres.map(genre => <option key={genre} value={genre}>{genre.toUpperCase()}</option>)} {/* UPPERCASE FIRST LETTER */}
+            <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+            >
 
-            </select>
+                {genresWithFilterBy.map((genre, i) =>
+                    <MenuItem key={i} onClick={() => handleClose(genre)}>{genre.toUpperCase()}</MenuItem>
+                )}
+
+            </Menu>
         </div>
     )
 }
