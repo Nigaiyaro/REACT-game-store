@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
 import FilterGenre from "./FilterGenre";
 
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
 const Offlet = ({
     games,
     handleModal,
@@ -31,6 +35,8 @@ const Offlet = ({
     const [filteredGames, setFilteredGames] = useState([]);
     const [sortedGames, setSortedGames] = useState([]);
 
+    const [anchorEl, setAnchorEl] = useState(null);
+
     // IF THERE IS GENRE SELECTED, FILTER THROUGH IT. IF NOT, REMAIN THE SAME.
     useEffect(() => {
         selectedGenre ? setFilteredGames(games.filter((game) => game.genre === selectedGenre)) : setFilteredGames(games);
@@ -59,6 +65,15 @@ const Offlet = ({
         return <div>Loading...</div>
     }
 
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = (eventValue) => {
+        setSelectedSorting(eventValue);
+        setAnchorEl(null);
+    };
+
     // ----- RETURN SECTION -----
     return (
         <div className="all-video-games-container">
@@ -69,6 +84,29 @@ const Offlet = ({
 
             <FilterGenre games={games} setSelectedGenre={setSelectedGenre} /> {/* FUNCTIONALITY OF FILTER BUTTON */}
 
+
+
+            <div style={styles.sort}>
+                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                    Sort by...
+            </Button>
+
+                <Menu
+                    id="simple-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                >
+
+                    <MenuItem onClick={() => handleClose("ascending-name")}>A-Z name</MenuItem>
+                    <MenuItem onClick={() => handleClose("descending-name")}>Z-A name</MenuItem>
+                    <MenuItem onClick={() => handleClose("ascending-price")}>ascending price</MenuItem>
+                    <MenuItem onClick={() => handleClose("descending-price")}>descending price</MenuItem>
+                </Menu>
+            </div>
+
+            {/*
             <div style={styles.sort}>
                 <select onChange={(e) => setSelectedSorting(e.target.value)} name="sort" id="sort">
                     <option value="">Sort by...</option>
@@ -77,7 +115,8 @@ const Offlet = ({
                     <option value="ascending-price">ascending price</option>
                     <option value="descending-price">descending price</option>
                 </select>
-            </div>
+            </div>*/}
+            
 
             <div className="all-video-games-content">
 

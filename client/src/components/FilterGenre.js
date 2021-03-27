@@ -11,7 +11,7 @@ const FilterGenre = ({ games, setSelectedGenre }) => {
 
     const genresWithFilterBy = ["filter by genre", ...genres]
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
     const [genreTitle, setGenreTitle] = useState("FILTER BY GENRE");
 
     const handleClick = (event) => {
