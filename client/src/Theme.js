@@ -3,9 +3,9 @@ import { createMuiTheme } from '@material-ui/core/styles';
 export const theme = createMuiTheme({
   
   palette: {
-    background: {
-      default: '#C0C0C0',
-    },
+    // background: {
+    //   default: '#C0C0C0',
+    // },
   },
   overrides: {
     MuiButton: {
@@ -17,6 +17,8 @@ export const theme = createMuiTheme({
         height: 24,
         padding: '0 30px',
         boxShadow: '0 3px 5px 2px rgba(28, 28, 28, .3)',
+        whiteSpace: "nowrap",
+        maxWidth: "100%",
       },
     },
   },

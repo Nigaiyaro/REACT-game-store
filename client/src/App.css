@@ -42,7 +42,7 @@
     width: 18vw;
     padding: 1rem; /* REM */
     border-radius: 5px;
-    margin: 5px;
+    margin: 15px;
     box-shadow: 0.5px 0.5px 3px rgba(0, 0, 0, 0.3);
 }
 
@@ -57,7 +57,7 @@
 }
 
 .game-selected-img {
-    width: 40%;
+    width: 50%;
     border-radius: 15px;
     margin-top: 2%;
     margin-bottom: 5%;
@@ -65,15 +65,10 @@
 
 .game-selected-details {
     text-align: center;
+    width: 70%;
 }
 
 .card-details-container {
     text-align: center;
     margin-top: 0.5rem;
-}
-
-.buy-now-button {
-    width: 30%;
-    background-color: gray;
-    border-radius: 5px;
 }

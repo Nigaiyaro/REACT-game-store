@@ -48,14 +48,18 @@ const SelectedGameView = ({
                 <img className="game-selected-img" src={selectedGame.image} alt={selectedGame.name} />
 
                 <div className="game-selected-details">
-                    {selectedGame.name}<br /><br />
-                Desc: {selectedGame.description}<br /><br />
-                Price: 10$<br /><br />
+
+                    <div style={{paddingBottom: "1rem"}}>{selectedGame.name}</div>
+                    Description: 
+                    <div style={{paddingBottom: "1rem"}}>{selectedGame.description}</div>
+                    <div style={{paddingBottom: "1rem"}}>Price: {selectedGame.price} €</div>
 
                     {!admin &&
-                        <Link to="/cart">
-                            <Button className="buy-now-button">Add to cart</Button><br /><br />
-                        </Link>
+                        <div style={{paddingBottom: "1rem"}}>
+                            <Link to="/cart">
+                                <Button>Add to cart</Button>
+                            </Link>
+                        </div>
                     }
 
                     {admin &&

@@ -13,13 +13,11 @@ const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
         navigation: {
             height: "12vh",
             width: "100%",
-            // border: "1px solid gray",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between"
         },
         imageContainer: {
-            // border: "1px solid red",
             width: "22%"
         }
     }
@@ -48,7 +46,7 @@ const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
 
                 {/* SEARCH VALUE FIELD */}
                 <input type="text" name="search" value={searchInput}
-                    style={{ height: "3rem", width: "80%", paddingLeft: "1rem"}}
+                    style={{ height: "3rem", width: "80%", paddingLeft: "1rem", marginLeft: "2rem"}}
                     onChange={(e) => setSearchInput(e.target.value)} />
 
                 {/* SEARCH BUTTON + ICON */}
@@ -58,7 +56,7 @@ const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
             </div>
 
             {/* SWITCH TO CUSTOMER/ADMIN BUTTON */}
-            <Button onClick={() => handleAdmin(!admin)} style={{ marginRight: "3rem" }}>{admin ? "Switch to customer ->" : "Switch to admin ->"}</Button>
+            <Button onClick={() => handleAdmin(!admin)} style={{ marginRight: "3rem", marginLeft: "3rem" }}>{admin ? "Switch to customer ->" : "Switch to admin ->"}</Button>
 
             <Link to="/cart">
                 <ShoppingCartIcon style={{ marginRight: "3rem" }}/>

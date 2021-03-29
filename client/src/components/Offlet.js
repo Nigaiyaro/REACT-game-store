@@ -34,6 +34,7 @@ const Offlet = ({
     const [selectedSorting, setSelectedSorting] = useState("");
     const [filteredGames, setFilteredGames] = useState([]);
     const [sortedGames, setSortedGames] = useState([]);
+    const [filter, setFilter] = useState("Sort by...");
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -70,6 +71,7 @@ const Offlet = ({
     };
 
     const handleClose = (eventValue) => {
+        setFilter(eventValue);
         setSelectedSorting(eventValue);
         setAnchorEl(null);
     };
@@ -88,7 +90,7 @@ const Offlet = ({
 
             <div style={styles.sort}>
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                    Sort by...
+                    {filter}
             </Button>
 
                 <Menu
@@ -105,19 +107,7 @@ const Offlet = ({
                     <MenuItem onClick={() => handleClose("descending-price")}>descending price</MenuItem>
                 </Menu>
             </div>
-
-            {/*
-            <div style={styles.sort}>
-                <select onChange={(e) => setSelectedSorting(e.target.value)} name="sort" id="sort">
-                    <option value="">Sort by...</option>
-                    <option value="ascending-name">A-Z name</option>
-                    <option value="descending-name">Z-A name</option>
-                    <option value="ascending-price">ascending price</option>
-                    <option value="descending-price">descending price</option>
-                </select>
-            </div>*/}
             
-
             <div className="all-video-games-content">
 
                 {admin && <Card />}
