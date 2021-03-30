@@ -16,21 +16,11 @@ const SelectedGameView = ({
 
     const [selectedGame, setSelectedGame] = useState([]);
 
-    console.log("matchi!");
-    console.log(match);
-
     useEffect(() => {
         setSelectedGame(match
             ? games.find((game) => game.id === Number(match.params.id))
             : null)
     }, [games, match]);
-
-    console.log("selectedGame");
-    console.log(selectedGame);
-
-    console.log("games");
-    console.log(games);
-
 
     const handleModify = () => {
         handleModal(true);
@@ -74,6 +64,8 @@ const SelectedGameView = ({
 
                         </>
                     }
+
+                    <div style={{ paddingBottom: '1.5rem' }} />
 
                 </div>
             </div>

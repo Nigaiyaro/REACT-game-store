@@ -3,10 +3,11 @@ import { createMuiTheme } from '@material-ui/core/styles';
 export const theme = createMuiTheme({
   
   palette: {
-    // background: {
-    //   default: '#C0C0C0',
-    // },
+    background: {
+      default: '#eeeeee',
+    },
   },
+
   overrides: {
     MuiButton: {
       text: {

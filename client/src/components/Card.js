@@ -39,15 +39,18 @@ const Card = ({
 
             <Link to={`/games/${game.id}`}>
                 <div className="card-img-container">
-                    <img className="card-img" src={game.image} alt={game.name} style={{ width: '100%', height: '20vh' }} />
+
+                    <img className="card-img" src={game.image} alt={game.name}
+                    style={{ width: 'auto', height: 'auto', overflow: 'hidden', maxHeight: '12rem', minHeight: '50px', minWidth: '80px' }} />
+
                 </div>
             </Link>
 
             <div className="card-details-container">
-                <div className="card-name">
+                <div className="card-name" style={{ marginTop: '1rem' }}>
                     {game.name}
                 </div>
-                <div className="card-price">
+                <div className="card-price" style={{ marginTop: '0.5rem', marginBottom: '0.5rem' }}>
                     {game.price} €
                 </div>
 
@@ -69,6 +72,8 @@ const Card = ({
                             <SimpleSnackBar handleCart={handleCart} game={game} />
                         </div>
 
+
+                        <div style={{ marginBottom: '0.5rem' }}/>
                     </>
                 }
             </div>

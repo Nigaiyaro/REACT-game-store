@@ -13,13 +13,6 @@
     font-family: "NeonFont";
 }
 
-.mainDeals {
-    display: flex; /* or inline-flex */
-    flex-direction: row;
-    width: 100%;
-    height: 50vh;
-}
-
 .all-video-games-content {
     display: flex; /* or inline-flex */
     flex-direction: row;
@@ -44,6 +37,7 @@
     border-radius: 5px;
     margin: 15px;
     box-shadow: 0.5px 0.5px 3px rgba(0, 0, 0, 0.3);
+    max-height: 20rem;
 }
 
 .card-image-container, .card-img {
@@ -57,7 +51,7 @@
 }
 
 .game-selected-img {
-    width: 50%;
+    width: 40%;
     border-radius: 15px;
     margin-top: 2%;
     margin-bottom: 5%;

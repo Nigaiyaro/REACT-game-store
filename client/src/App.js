@@ -16,11 +16,13 @@ import SearchResults from "./components/SearchResults";
 import Modify from "./components/Modify";
 import AddNewGame from "./components/AddNewGame";
 import Cart from "./components/Cart";
+import { createMuiTheme  } from '@material-ui/core/styles';
 
 function App() {
 
   // USE HISTORY
   let history = useHistory();
+  
 
   // STATES
   const [admin, setAdmin] = useState(false);
@@ -102,7 +104,7 @@ function App() {
       />
 
       <Route path="/" exact>
-        <FlexItems />
+        <FlexItems games={games}/>
 
         <Offlet
           games={games}

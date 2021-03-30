@@ -46,7 +46,7 @@ const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
 
                 {/* SEARCH VALUE FIELD */}
                 <input type="text" name="search" value={searchInput}
-                    style={{ height: "3rem", width: "80%", paddingLeft: "1rem", marginLeft: "2rem"}}
+                    style={{ height: "3rem", width: "80%", paddingLeft: "1rem", marginLeft: "4.5rem"}}
                     onChange={(e) => setSearchInput(e.target.value)} />
 
                 {/* SEARCH BUTTON + ICON */}
