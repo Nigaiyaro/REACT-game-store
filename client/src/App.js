@@ -13,17 +13,16 @@ import FlexItems from "./components/FlexItems";
 import Offlet from "./components/Offlet";
 import SelectedGameView from "./components/SelectedGameView";
 import SearchResults from "./components/SearchResults";
+import Register from "./components/Register";
 import Modify from "./components/Modify";
 import AddNewGame from "./components/AddNewGame";
 import Cart from "./components/Cart";
-import { createMuiTheme  } from '@material-ui/core/styles';
 
 function App() {
 
   // USE HISTORY
   let history = useHistory();
   
-
   // STATES
   const [admin, setAdmin] = useState(false);
   const [games, setGames] = useState([]);
@@ -155,6 +154,10 @@ function App() {
 
       <Route path="/cart">
         <Cart cart={cart} setCart={setCart} />
+      </Route>
+
+      <Route path="/register">
+        <Register />
       </Route>
     </div>
   );

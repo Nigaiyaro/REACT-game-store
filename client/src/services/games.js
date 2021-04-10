@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3000/games";
+const baseURL = "http://localhost:3001/games";
 
 const getData = async() => {
     const response = await axios.get(baseURL);
@@ -18,7 +18,7 @@ const addData = async(newGame) => {
 }
 
 const modifyData = async(modifiedGame) => {
-    const response = await axios.put(`${baseURL}/${modifiedGame.id}`, modifiedGame); // KESKEN
+    const response = await axios.put(`${baseURL}/${modifiedGame.id}`, modifiedGame);
     return response.data;
 }
 

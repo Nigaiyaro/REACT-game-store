@@ -27,6 +27,10 @@ const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
         // ROUTE AND MAKE A PAGE FOR SEARCH RESULTS
     }
 
+    const routeToAdmin = () => {
+        history.push("/register");
+    }
+
 
     return (
         <div style={styles.navigation}>
@@ -57,6 +61,8 @@ const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
 
             {/* SWITCH TO CUSTOMER/ADMIN BUTTON */}
             <Button onClick={() => handleAdmin(!admin)} style={{ marginRight: "3rem", marginLeft: "3rem" }}>{admin ? "Switch to customer ->" : "Switch to admin ->"}</Button>
+
+            <Button onClick={routeToAdmin} style={{ marginRight: "3rem", marginLeft: "3rem" }}>register</Button>
 
             <Link to="/cart">
                 <ShoppingCartIcon style={{ marginRight: "3rem" }}/>

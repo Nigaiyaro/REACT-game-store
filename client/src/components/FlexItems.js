@@ -1,6 +1,6 @@
 import React from "react";
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from '../../node_modules/react-responsive-carousel';
+import "../../node_modules/react-responsive-carousel/lib/styles/carousel.min.css";
 import { useHistory } from "react-router-dom";
 
 const FlexItems = ({ games }) => {
@@ -15,7 +15,7 @@ const FlexItems = ({ games }) => {
 
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
-            <Carousel infiniteLoop={true} autoPlay={true} interval={3500} width={"70vh"}>
+            <Carousel infiniteLoop={true} autoPlay={true} interval={3500} width={"70vh"} showThumbs={false}>
 
                     <div onClick={() => historyPusher(2)} style={{ cursor: "pointer" }}>
 

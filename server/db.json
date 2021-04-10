@@ -162,5 +162,37 @@
       "genre": "VR",
       "price": 0
     }
+  ],
+  "accounts": [
+    {
+      "username": "niko",
+      "password": "salis",
+      "id": 1
+    },
+    {
+      "username": "auto",
+      "password": "mopo",
+      "id": 2
+    },
+    {
+      "username": "adfsef",
+      "password": "dsdsfsdf",
+      "id": 3
+    },
+    {
+      "username": "testi1",
+      "password": "testi2",
+      "id": 4
+    },
+    {
+      "username": "testi3",
+      "password": "testi4",
+      "id": 5
+    },
+    {
+      "username": "testiuus",
+      "password": "testiniin",
+      "id": 6
+    }
   ]
 }
