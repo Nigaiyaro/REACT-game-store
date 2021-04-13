@@ -5,7 +5,15 @@ import cors from 'cors';
 import express from 'express';
 import session from 'express-session';
 
-import User from './user';
+import dataBase from './db.json';
+
+console.log(dataBase);
+
+const namesDB = dataBase.forEach(element => {
+    element.username;
+});
+
+// import User from './user';
 
 const app = express();
 
@@ -39,14 +47,24 @@ app.post("/login", (req, res) => {
     console.log(reg.body);
 });
 
+app.post("/accounts", (req, res) => {
+    
+});
+
 app.post("/register", (req, res) => {
-    User.findOne({username: req.body.username}, (err,doc) => {
-        if (err) throw err;
-        if (doc) res.send("User already exists.");
-        if (!doc) {
-            res.send("User created.");
-        }
-    });
+
+    console.log(req.body);
+
+    // dataBase.find(element => element === req.body);
+
+    // User.findOne({username: req.body.username}, (err,doc) => {
+    //     if (err) throw err;
+    //     if (doc) res.send("User already exists.");
+    //     if (!doc) {
+    //         res.send("User created.");
+    //     }
+    // });
+
     // console.log(reg.body);
 });
 

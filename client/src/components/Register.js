@@ -7,19 +7,33 @@ const Register = () => {
     // AUTHENTICATION STATES
     const [registerUsername, setRegisterUsername] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
-    const [registered, setRegistered] = useState(false);
+    const [registered, setRegistered] = useState(false); // checks if user just registered or not.
+    const [letterError, setLetterError] = useState(-1); // -1 if no error. 0 if password is not long enough. 1 if username. 2 if both.
 
     const register = () => {
-        Axios({
-            method: "POST",
-            data: {
-                username: registerUsername,
-                password: registerPassword
-            },
-            url: "http://localhost:3001/accounts",
-            credentials: "true"
-        }).then((res) => console.log(res))
-        setRegistered(true);
+
+        if (registerUsername.length > 3 && registerPassword.length > 4) { // if username + password are of sufficient length, post.
+            Axios({
+                method: "POST",
+                data: {
+                    username: registerUsername,
+                    password: registerPassword
+                },
+                url: "http://localhost:3001/accounts",
+                credentials: "true"
+            }).then((res) => console.log(res))
+            setRegistered(true)
+            setLetterError(false);
+        }
+        else if (registerUsername.length > 3 && registerPassword.length < 5) {
+            setLetterError(0);
+        }
+        else if (registerUsername.length < 4 && registerPassword.length > 4) {
+            setLetterError(1);
+        }
+        else {
+            setLetterError(2);
+        }
     }
 
     // const login = () => {
@@ -62,7 +76,11 @@ const Register = () => {
                             />
                         </div>
 
-                        <Button style={{ padding: "0.5rem", marginTop: "2vw" }} onClick={register}>Submit</Button>
+                        <Button style={{ padding: "0.5rem", marginTop: "2vw", marginBottom: "1vw" }} onClick={register}>Submit</Button>
+
+                        {(letterError === 0) && <div>Password is not long enough</div>}
+                        {(letterError === 1) && <div>Username is not long enough</div>}
+                        {(letterError === 2) && <div>Username and password<br/> are not long enough</div>}
 
                     </div>
                 </div>
