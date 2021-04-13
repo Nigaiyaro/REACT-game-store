@@ -5,13 +5,11 @@ import cors from 'cors';
 import express from 'express';
 import session from 'express-session';
 
-import dataBase from './db.json';
+// import dataBase from './db.json';
 
-console.log(dataBase);
-
-const namesDB = dataBase.forEach(element => {
-    element.username;
-});
+// const namesDB = dataBase.forEach(element => {
+//     element.username;
+// });
 
 // import User from './user';
 
@@ -47,9 +45,7 @@ app.post("/login", (req, res) => {
     console.log(reg.body);
 });
 
-app.post("/accounts", (req, res) => {
-    
-});
+app.post("/accounts", (req, res) => {});
 
 app.post("/register", (req, res) => {
 
