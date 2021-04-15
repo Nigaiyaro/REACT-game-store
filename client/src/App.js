@@ -8,15 +8,15 @@ import Modal from 'react-modal';
 import gameService from "./services/games";
 
 // IMPORT SELF-MADE COMPONENTS
-import NavBar from "./components/NavBar";
-import FlexItems from "./components/FlexItems";
-import Offlet from "./components/Offlet";
-import SelectedGameView from "./components/SelectedGameView";
-import SearchResults from "./components/SearchResults";
-import Register from "./components/Register";
-import Modify from "./components/Modify";
-import AddNewGame from "./components/AddNewGame";
-import Cart from "./components/Cart";
+import ComponentNavigationBar from "./components/NavigationBar"; // Upmost navigation bar.
+import ComponentCarousel from "./components/Carousel"; // Main page carousel.
+import ComponentGamesListView from "./components/GamesListView";
+import ComponentSingleGameView from "./components/SingleGameView"; // Opens when selecting singular game.
+import ComponentSearchResults from "./components/SearchResults"; // Search results page.
+import ComponentRegisterUser from "./components/RegisterUser"; // Account registration page.
+import ComponentModifyGame from "./components/ModifyGame";
+import ComponentAddNewGame from "./components/AddNewGame";
+import ComponentShoppingCart from "./components/ShoppingCart";
 
 function App() {
 
@@ -95,7 +95,7 @@ function App() {
   return (
     <div className="App">
 
-      <NavBar
+      <ComponentNavigationBar
         admin={admin}
         handleAdmin={handleAdmin}
         searchInput={searchInput}
@@ -103,9 +103,9 @@ function App() {
       />
 
       <Route path="/" exact>
-        <FlexItems games={games}/>
+        <ComponentCarousel games={games}/>
 
-        <Offlet
+        <ComponentGamesListView
           games={games}
           handleModal={handleModal}
           handleDelete={handleDelete}
@@ -117,7 +117,7 @@ function App() {
       </Route>
 
       <Route path="/games/:id">
-        <SelectedGameView
+        <ComponentSingleGameView
           games={games}
           handleModal={handleModal}
           handleDelete={handleDelete}
@@ -127,7 +127,7 @@ function App() {
       </Route>
 
       <Route path="/search">
-        <SearchResults
+        <ComponentSearchResults
           games={games}
           searchInput={searchInput}
           handleModal={handleModal}
@@ -139,7 +139,7 @@ function App() {
       </Route>
 
       <Modal isOpen={modalIsOpen} style={customStyles}>
-        <Modify
+        <ComponentModifyGame
           handleModal={handleModal}
           currentGame={currentGame}
           handleModifyGame={handleModifyGame}
@@ -149,15 +149,15 @@ function App() {
       </Modal>
 
       <Route path="/addnewgame">
-        <AddNewGame handleNewGame={handleNewGame} showNotification={showNotification} />
+        <ComponentAddNewGame handleNewGame={handleNewGame} showNotification={showNotification} />
       </Route>
 
       <Route path="/cart">
-        <Cart cart={cart} setCart={setCart} />
+        <ComponentShoppingCart cart={cart} setCart={setCart} />
       </Route>
 
       <Route path="/register">
-        <Register />
+        <ComponentRegisterUser />
       </Route>
     </div>
   );

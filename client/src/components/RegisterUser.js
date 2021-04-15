@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Axios from 'axios';
 import Button from '@material-ui/core/Button';
 
-const Register = () => {
+const RegisterUser = () => {
 
     // AUTHENTICATION STATES
     const [registerUsername, setRegisterUsername] = useState("");
@@ -10,39 +10,40 @@ const Register = () => {
     const [registered, setRegistered] = useState(false); // checks if user just registered or not.
     const [letterError, setLetterError] = useState(-1); // -1 if no error. 0 if password is not long enough. 1 if username. 2 if both.
 
-    const register = () => {
+
+    async function register() {
 
         if (registerUsername.length > 3 && registerPassword.length > 4) { // if username + password are of sufficient length, post.
-            Axios({
-                method: "POST",
-                data: {
-                    username: registerUsername,
-                    password: registerPassword
-                },
-                url: "http://localhost:3001/accounts",
-                credentials: "true"
-            }).then((res) => console.log(res))
-            setRegistered(true)
-            setLetterError(false);
-        }
-        else if (registerUsername.length > 3 && registerPassword.length < 5) {
-            setLetterError(0);
-        }
-        else if (registerUsername.length < 4 && registerPassword.length > 4) {
-            setLetterError(1);
-        }
-        else {
+
+            const tryRegister = () => {
+                console.log("Registering...");
+
+                Axios({
+                    method: "POST",
+                    data: {
+                        username: registerUsername,
+                        password: registerPassword
+                    },
+                    url: "http://localhost:3001/accounts",
+                    credentials: "true"
+                }).then((res) => console.log(res))
+
+                setRegistered(true);
+                setLetterError(-1);
+
+                console.log("Registered.");
+            }
+
+            const res = await Axios.get(`http://localhost:3001/accounts?username=${registerUsername}`);
+            const data = res.data[0];
+
+            data ? console.log("Username with this name already exists.")
+            : tryRegister()
+            
+        } else if (registerUsername.length < 4 && registerPassword.length < 5) {
             setLetterError(2);
         }
     }
-
-    // const login = () => {
-    //     Axios({
-    //         method: "POST",
-    //         url: "http://localhost:3001/accounts",
-    //         credentials: "true"
-    //     }).then((res) => console.log(res))
-    // }
 
     const styles = {
         flexItem: {
@@ -80,7 +81,7 @@ const Register = () => {
 
                         {(letterError === 0) && <div>Password is not long enough</div>}
                         {(letterError === 1) && <div>Username is not long enough</div>}
-                        {(letterError === 2) && <div>Username and password<br/> are not long enough</div>}
+                        {(letterError === 2) && <div>Username and password<br /> are not long enough</div>}
 
                     </div>
                 </div>
@@ -91,5 +92,4 @@ const Register = () => {
     )
 }
 
-
-export default Register;
+export default RegisterUser;

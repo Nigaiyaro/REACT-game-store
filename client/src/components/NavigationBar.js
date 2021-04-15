@@ -5,7 +5,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
 
-const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
+const NavigationBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
 
     let history = useHistory();
 
@@ -72,4 +72,4 @@ const NavBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
     )
 }
 
-export default NavBar;
+export default NavigationBar;

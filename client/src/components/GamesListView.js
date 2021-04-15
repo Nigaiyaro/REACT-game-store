@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Card from "../components/Card";
+import Card from "./Card";
 import FilterGenre from "./FilterGenre";
 
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const Offlet = ({
+const GamesListViewComponent = ({
     games,
     handleModal,
     handleDelete,
@@ -132,4 +132,4 @@ const Offlet = ({
     )
 }
 
-export default Offlet;
+export default GamesListViewComponent;
