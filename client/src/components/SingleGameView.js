@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
 import SubdirectoryArrowLeftIcon from '@material-ui/icons/SubdirectoryArrowLeft';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
+import MuiCard from '@material-ui/core/Card';
 
 const SelectedGameView = ({
     games,
@@ -28,7 +28,7 @@ const SelectedGameView = ({
     }
 
     return (
-        <Card>
+        <MuiCard>
             <Link to="/">
                 <SubdirectoryArrowLeftIcon style={{ fontSize: 56, color: "black" }} />
             </Link>
@@ -69,7 +69,7 @@ const SelectedGameView = ({
 
                 </div>
             </div>
-        </Card>
+        </MuiCard>
     )
 }
 

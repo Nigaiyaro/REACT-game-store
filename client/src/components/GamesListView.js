@@ -91,7 +91,7 @@ const GamesListViewComponent = ({
             <div style={styles.sort}>
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                     {filter}
-            </Button>
+                </Button>
 
                 <Menu
                     id="simple-menu"
@@ -107,25 +107,41 @@ const GamesListViewComponent = ({
                     <MenuItem onClick={() => handleClose("descending-price")}>descending price</MenuItem>
                 </Menu>
             </div>
-            
+
             <div className="all-video-games-content">
 
                 {admin && <Card />}
 
                 {
-                    sortedGames.map((game) =>
+                    (sortedGames.length > 0) ?
 
-                        <Card
-                            game={game}
-                            key={game.id}
-                            handleModal={handleModal}
-                            handleDelete={handleDelete}
-                            admin={admin}
-                            setCurrentGame={setCurrentGame}
-                            handleCart={handleCart}
-                            handleNotification={handleNotification}
-                            showNotification={showNotification}
-                        />)
+                        sortedGames.map((game) =>
+
+                            <Card
+                                game={game}
+                                key={game.id}
+                                handleModal={handleModal}
+                                handleDelete={handleDelete}
+                                admin={admin}
+                                setCurrentGame={setCurrentGame}
+                                handleCart={handleCart}
+                                handleNotification={handleNotification}
+                                showNotification={showNotification}
+                            />)
+                        :
+                        games.map((game) =>
+                            <Card
+                                game={game}
+                                key={game.id}
+                                handleModal={handleModal}
+                                handleDelete={handleDelete}
+                                admin={admin}
+                                setCurrentGame={setCurrentGame}
+                                handleCart={handleCart}
+                                handleNotification={handleNotification}
+                                showNotification={showNotification}
+                            />
+                        )
                 }
             </div>
         </div>

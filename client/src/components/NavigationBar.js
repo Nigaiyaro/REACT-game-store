@@ -5,7 +5,14 @@ import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
 
-const NavigationBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
+const NavigationBar = ({
+    admin,
+    handleAdmin,
+    searchInput,
+    setSearchInput,
+    loggedInAccount,
+    setLoggedInAccount
+}) => {
 
     let history = useHistory();
 
@@ -28,7 +35,12 @@ const NavigationBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
     }
 
     const routeToAdmin = () => {
-        history.push("/register");
+        history.push("/authentication");
+    }
+
+    const logOut = () => {
+        setLoggedInAccount(undefined);
+        console.log("Succesfully logged out.");
     }
 
 
@@ -50,7 +62,7 @@ const NavigationBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
 
                 {/* SEARCH VALUE FIELD */}
                 <input type="text" name="search" value={searchInput}
-                    style={{ height: "3rem", width: "80%", paddingLeft: "1rem", marginLeft: "4.5rem"}}
+                    style={{ height: "3rem", width: "80%", paddingLeft: "1rem", marginLeft: "4.5rem" }}
                     onChange={(e) => setSearchInput(e.target.value)} />
 
                 {/* SEARCH BUTTON + ICON */}
@@ -60,12 +72,16 @@ const NavigationBar = ({ admin, handleAdmin, searchInput, setSearchInput }) => {
             </div>
 
             {/* SWITCH TO CUSTOMER/ADMIN BUTTON */}
-            <Button onClick={() => handleAdmin(!admin)} style={{ marginRight: "3rem", marginLeft: "3rem" }}>{admin ? "Switch to customer ->" : "Switch to admin ->"}</Button>
+            {loggedInAccount && (loggedInAccount.admin && <Button onClick={() => handleAdmin(!admin)} style={{ marginRight: "3rem", marginLeft: "3rem" }}>{admin ? "Switch to customer ->" : "Switch to admin ->"}</Button>)}
 
-            <Button onClick={routeToAdmin} style={{ marginRight: "3rem", marginLeft: "3rem" }}>register</Button>
+            {!loggedInAccount ?
+                <Button onClick={routeToAdmin} style={{ marginRight: "3rem", marginLeft: "3rem" }}>register/login</Button>
+                :
+                <Button onClick={logOut} style={{ marginRight: "3rem", marginLeft: "3rem" }}>Log out</Button>}
+
 
             <Link to="/cart">
-                <ShoppingCartIcon style={{ marginRight: "3rem" }}/>
+                <ShoppingCartIcon style={{ marginRight: "3rem" }} />
             </Link>
 
         </div>

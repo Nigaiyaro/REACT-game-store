@@ -7,16 +7,21 @@ import Modal from 'react-modal';
 // GAME SERVICE
 import gameService from "./services/games";
 
-// IMPORT SELF-MADE COMPONENTS
+// Navigation bar.
 import ComponentNavigationBar from "./components/NavigationBar"; // Upmost navigation bar.
+
+// Starting page.
 import ComponentCarousel from "./components/Carousel"; // Main page carousel.
 import ComponentGamesListView from "./components/GamesListView";
+
+// Extra pages
 import ComponentSingleGameView from "./components/SingleGameView"; // Opens when selecting singular game.
 import ComponentSearchResults from "./components/SearchResults"; // Search results page.
-import ComponentRegisterUser from "./components/RegisterUser"; // Account registration page.
+import ComponentAuthentication from "./components/AuthenticationPage"; // Account registration page.
+import ComponentShoppingCart from "./components/ShoppingCart";
+
 import ComponentModifyGame from "./components/ModifyGame";
 import ComponentAddNewGame from "./components/AddNewGame";
-import ComponentShoppingCart from "./components/ShoppingCart";
 
 function App() {
 
@@ -24,6 +29,7 @@ function App() {
   let history = useHistory();
   
   // STATES
+  const [loggedInAccount, setLoggedInAccount] = useState(undefined);
   const [admin, setAdmin] = useState(false);
   const [games, setGames] = useState([]);
   const [currentGame, setCurrentGame] = useState(null);
@@ -31,6 +37,8 @@ function App() {
   const [searchInput, setSearchInput] = useState("");
   const [showNotification, setShowNotification] = useState({ msg: "", show: false });
   const [cart, setCart] = useState([]);
+
+  if (loggedInAccount) { console.log(loggedInAccount) }
 
   // USE EFFECT
   useEffect(() => {
@@ -100,6 +108,8 @@ function App() {
         handleAdmin={handleAdmin}
         searchInput={searchInput}
         setSearchInput={setSearchInput}
+        loggedInAccount={loggedInAccount}
+        setLoggedInAccount={setLoggedInAccount}
       />
 
       <Route path="/" exact>
@@ -156,8 +166,8 @@ function App() {
         <ComponentShoppingCart cart={cart} setCart={setCart} />
       </Route>
 
-      <Route path="/register">
-        <ComponentRegisterUser />
+      <Route path="/authentication">
+        <ComponentAuthentication loggedInAccount={loggedInAccount} setLoggedInAccount={setLoggedInAccount} />
       </Route>
     </div>
   );

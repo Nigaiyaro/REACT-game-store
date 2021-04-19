@@ -158,11 +158,13 @@
     {
       "username": "niko",
       "password": "salis",
+      "admin": "true",
       "id": 1
     },
     {
       "username": "auto",
       "password": "mopo",
+      "admin": "false",
       "id": 2
     }
   ]
