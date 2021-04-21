@@ -166,6 +166,12 @@
       "password": "mopo",
       "admin": "false",
       "id": 2
+    },
+    {
+      "username": "niko2",
+      "password": "salis2",
+      "admin": "false",
+      "id": 3
     }
   ]
 }

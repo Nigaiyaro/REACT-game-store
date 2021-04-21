@@ -61,7 +61,7 @@ const Card = ({
                         </div>
 
                         <div> {/* DELETE GAME -BUTTON */}
-                            <Button onClick={() => handleDelete(game.id)}>Delete</Button>
+                            <Button style={{ marginBottom: "2vw" }} onClick={() => handleDelete(game.id)}>Delete</Button>
                         </div>
                     </>
 

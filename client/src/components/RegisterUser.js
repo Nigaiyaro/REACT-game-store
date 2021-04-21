@@ -21,7 +21,8 @@ const RegisterUser = () => {
                     method: "POST",
                     data: {
                         username: registerUsername,
-                        password: registerPassword
+                        password: registerPassword,
+                        admin: "false"
                     },
                     url: "http://localhost:3001/accounts",
                     credentials: "true"

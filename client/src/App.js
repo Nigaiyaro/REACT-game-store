@@ -110,6 +110,7 @@ function App() {
         setSearchInput={setSearchInput}
         loggedInAccount={loggedInAccount}
         setLoggedInAccount={setLoggedInAccount}
+        setAdmin={setAdmin}
       />
 
       <Route path="/" exact>
