@@ -14,7 +14,9 @@ const GamesListViewComponent = ({
     setCurrentGame,
     handleCart,
     handleNotification,
-    showNotification
+    showNotification,
+    openSnackbar,
+    setSnackbarMsg
 }) => { // arrow notation
 
     // CSS STYLES
@@ -127,6 +129,8 @@ const GamesListViewComponent = ({
                                 handleCart={handleCart}
                                 handleNotification={handleNotification}
                                 showNotification={showNotification}
+                                openSnackbar={openSnackbar}
+                                setSnackbarMsg={setSnackbarMsg}
                             />)
                         :
                         games.map((game) =>
@@ -140,6 +144,8 @@ const GamesListViewComponent = ({
                                 handleCart={handleCart}
                                 handleNotification={handleNotification}
                                 showNotification={showNotification}
+                                openSnackbar={openSnackbar}
+                                setSnackbarMsg={setSnackbarMsg}
                             />
                         )
                 }

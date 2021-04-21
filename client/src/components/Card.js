@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import SimpleSnackBar from "./SimpleSnackBar";
 import Button from '@material-ui/core/Button';
 
 const Card = ({
@@ -9,7 +8,9 @@ const Card = ({
     handleDelete,
     admin,
     setCurrentGame,
-    handleCart
+    handleCart,
+    openSnackbar,
+    setSnackbarMsg
 }) => {
 
     // USEHISTORY
@@ -33,6 +34,12 @@ const Card = ({
         setCurrentGame(game);
     }
 
+    const testi = () => {
+        handleCart(game);
+        setSnackbarMsg('Game was added to cart');
+        openSnackbar();
+    }
+
     // ----- RETURN SECTION -----                                           // USE <LINK> HERE
     return game ? (
         <div className="card-container">
@@ -41,7 +48,7 @@ const Card = ({
                 <div className="card-img-container">
 
                     <img className="card-img" src={game.image} alt={game.name}
-                    style={{ width: 'auto', height: 'auto', overflow: 'hidden', maxHeight: '12rem', minHeight: '50px', minWidth: '80px' }} />
+                        style={{ width: 'auto', height: 'auto', overflow: 'hidden', maxHeight: '12rem', minHeight: '50px', minWidth: '80px' }} />
 
                 </div>
             </Link>
@@ -57,7 +64,7 @@ const Card = ({
                 {admin ?
                     <>
                         <div> {/* MODIFY GAME -BUTTON */}
-                                <Button onClick={handleModify}>Modify</Button>
+                            <Button onClick={handleModify}>Modify</Button>
                         </div>
 
                         <div> {/* DELETE GAME -BUTTON */}
@@ -69,11 +76,10 @@ const Card = ({
 
                     <>
                         <div> {/* ADD TO CART -BUTTON */}
-                            <SimpleSnackBar handleCart={handleCart} game={game} />
+                            <Button onClick={testi}>Add to cart</Button>
                         </div>
 
-
-                        <div style={{ marginBottom: '0.5rem' }}/>
+                        <div style={{ marginBottom: '0.5rem' }} />
                     </>
                 }
             </div>

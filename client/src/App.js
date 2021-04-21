@@ -23,6 +23,8 @@ import ComponentShoppingCart from "./components/ShoppingCart";
 import ComponentModifyGame from "./components/ModifyGame";
 import ComponentAddNewGame from "./components/AddNewGame";
 
+import SimpleSnackbar from './components/SimpleSnackBar';
+
 function App() {
 
   // USE HISTORY
@@ -37,6 +39,20 @@ function App() {
   const [searchInput, setSearchInput] = useState("");
   const [showNotification, setShowNotification] = useState({ msg: "", show: false });
   const [cart, setCart] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState('');
+
+  const openSnackbar = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   if (loggedInAccount) { console.log(loggedInAccount) }
 
@@ -47,6 +63,10 @@ function App() {
     }
     getInitialData();
   }, [])
+
+  useEffect(() => {
+    openSnackbar();
+  }, [snackbarMsg])
 
   // SELF-MADE NOTIFICATION FUNCTIONALITY
   const handleNotification = (msg, show, delay) => {
@@ -111,6 +131,8 @@ function App() {
         loggedInAccount={loggedInAccount}
         setLoggedInAccount={setLoggedInAccount}
         setAdmin={setAdmin}
+        setSnackbarMsg={setSnackbarMsg}
+        openSnackbar={openSnackbar}
       />
 
       <Route path="/" exact>
@@ -123,6 +145,8 @@ function App() {
           admin={admin}
           setCurrentGame={setCurrentGame}
           handleCart={handleCart}
+          openSnackbar={openSnackbar}
+          setSnackbarMsg={setSnackbarMsg}
         />
 
       </Route>
@@ -168,8 +192,10 @@ function App() {
       </Route>
 
       <Route path="/authentication">
-        <ComponentAuthentication loggedInAccount={loggedInAccount} setLoggedInAccount={setLoggedInAccount} />
+        <ComponentAuthentication loggedInAccount={loggedInAccount} setLoggedInAccount={setLoggedInAccount} setSnackbarMsg={setSnackbarMsg} openSnackbar={openSnackbar} />
       </Route>
+
+      <SimpleSnackbar handleClose={handleClose} open={open} snackbarMsg={snackbarMsg}/>
     </div>
   );
 }

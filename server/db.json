@@ -172,6 +172,18 @@
       "password": "salis2",
       "admin": "false",
       "id": 3
+    },
+    {
+      "username": "testisnack",
+      "password": "snack123",
+      "admin": "false",
+      "id": 4
+    },
+    {
+      "username": "historytest",
+      "password": "test123",
+      "admin": "false",
+      "id": 5
     }
   ]
 }

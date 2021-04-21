@@ -12,7 +12,9 @@ const NavigationBar = ({
     setSearchInput,
     loggedInAccount,
     setLoggedInAccount,
-    setAdmin
+    setAdmin,
+    setSnackbarMsg,
+    openSnackbar
 }) => {
 
     let history = useHistory();
@@ -42,7 +44,8 @@ const NavigationBar = ({
     const logOut = () => {
         setLoggedInAccount(undefined);
         setAdmin(false);
-        console.log("Succesfully logged out.");
+        setSnackbarMsg('Succesfully logged out.');
+        openSnackbar();
     }
 
 

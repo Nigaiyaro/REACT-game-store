@@ -3,7 +3,7 @@ import Axios from 'axios';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
 
-const LoginUser = ({ loggedInAccount, setLoggedInAccount }) => {
+const LoginUser = ({ loggedInAccount, setLoggedInAccount, setSnackbarMsg, openSnackbar }) => {
 
     let history = useHistory();
 
@@ -21,6 +21,8 @@ const LoginUser = ({ loggedInAccount, setLoggedInAccount }) => {
                 console.log("tryLogin");
                 setLoggedInAccount(matchUser);
                 console.log("succesfully logged in");
+                setSnackbarMsg('Succesfully logged in.');
+                openSnackbar();
                 history.push("/");
             }
 

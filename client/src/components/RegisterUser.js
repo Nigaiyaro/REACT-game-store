@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import Axios from 'axios';
 import Button from '@material-ui/core/Button';
+import { useHistory } from "react-router-dom";
 
-const RegisterUser = () => {
+const RegisterUser = ({ setSnackbarMsg, openSnackbar }) => {
+
+    let history = useHistory();
 
     // AUTHENTICATION STATES
     const [registerUsername, setRegisterUsername] = useState("");
@@ -30,7 +33,11 @@ const RegisterUser = () => {
 
                 setLetterError(-1);
 
-                console.log("Registered.");
+                setSnackbarMsg('Succesfully registered user.');
+                openSnackbar();
+
+                history.push("/");
+
             }
 
             const res = await Axios.get(`http://localhost:3001/accounts?username=${registerUsername}`);
