@@ -1,4 +1,5 @@
-Buutti Code intensive training course -personal project
+This app is a game store -website
+It has been created as a part of Buutti's intensive training program as a personal project
 
 
 cd ./game-store/
